@@ -20,7 +20,7 @@ const Login = () => {
 
 
     const handleResgister = (event) => {
-        window.location.href = '/registro'
+        e.preventDefault()
     }
     const authSesion = (e) => {
         e.preventDefault();

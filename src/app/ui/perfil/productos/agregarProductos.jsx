@@ -11,8 +11,6 @@ import { PlusIcon } from '@heroicons/react/24/outline'
 import { api } from '../../../../api/api';
 import Alerta from '../../alertas/alert'
 import Galeria from './galeria'
-import UploadedImage from './imagenesSubir'
-import { Try } from '@mui/icons-material'
 
 const defaultValues = {
     tituloProducto: '',

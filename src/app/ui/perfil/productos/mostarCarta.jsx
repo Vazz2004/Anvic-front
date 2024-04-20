@@ -1,8 +1,7 @@
 'use client'
 import React, { useEffect, useState } from 'react';
 import Card from './card';
-import { api } from '../../../../api/api';
-import { Stack } from '@mui/system';
+import { api } from '../../../../api/api'
 import Botonera from '../../uiMother/botonera';
 import FormProducto from '../../../ui/perfil/productos/agregarProductos';
 import { PlusIcon } from '@heroicons/react/24/outline';
