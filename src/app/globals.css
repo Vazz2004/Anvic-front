@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.inputBusqueda input {
+    margin-top: 1%;
+    width: 520px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.todo_cartas {
+    width: 99%;
+}
+
+.icon {
+    font-size: 50px;
+}
+
+.scrol {
+    overflow: auto;
+    max-height: 300px;
+}
+
+.circle {
+    height: 24px;
+    width: 24px;
+    border-radius: 24px;
+    background-color: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 99999999;
+    /* so that it stays on top of all other elements */
+}
+
+
+
+@media (max-width: 1023px) {
+    .movil {
+        display: none;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .Baner {
+        width: 100%;
+    }
+}
+
+
+
+
+
+/* Estilo base */
+.alerta {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  /* Estilo para cuando está visible */
+  .alerta.visible {
+    opacity: 1;
+  }
+  
+  /* Keyframes para la animación de aparición */
+  @keyframes aparecer {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  

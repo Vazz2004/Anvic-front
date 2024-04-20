@@ -1,0 +1,46 @@
+{
+  "name": "anvicstore",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@headlessui/react": "^1.7.17",
+    "@heroicons/react": "^2.1.1",
+    "@mui/icons-material": "^5.15.11",
+    "@mui/material": "^5.15.11",
+    "@mui/system": "^5.14.19",
+    "@mui/x-data-grid": "^6.19.6",
+    "@nivo/bar": "^0.85.1",
+    "@radix-ui/react-icons": "^1.3.0",
+    "@radix-ui/react-slot": "^1.0.2",
+    "axios": "^1.6.7",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "dayjs": "^1.11.10",
+    "firebase": "^10.10.0",
+    "lucide-react": "^0.366.0",
+    "next": "^14.3.0-canary.11",
+    "react": "^18.2.0",
+    "react-dom": "^18",
+    "react-icons": "^4.12.0",
+    "react-modal": "^3.16.1",
+    "react-responsive-carousel": "^3.2.23",
+    "swiper": "^11.0.5",
+    "tailwind-merge": "^2.2.2",
+    "tailwindcss-animate": "^1.0.7",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.0.1",
+    "eslint": "^8.57.0",
+    "postcss": "^8",
+    "standard": "^17.1.0",
+    "tailwindcss": "^3.3.0",
+    "typescript": "5.4.3"
+  }
+}

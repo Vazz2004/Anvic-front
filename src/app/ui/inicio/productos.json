@@ -1,0 +1,128 @@
+[
+    {
+        "id": "1",
+        "image": "/prueba.png",
+        "descrip": "venta Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+        "puntuacion": "4.0",
+        "prom": "FULL",
+        "precio": "$79.900",
+        "estado": "venta"
+    },
+    {
+        "id": "2",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_864432-MLA54954927923_042023-F.webp",
+        "descrip": "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+        "puntuacion": "5.0",
+        "prom": "FULL",
+        "precio": "$59.000",
+        "estado": "venta"
+    },
+    {
+        "id": "3",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_893018-CBT71987335139_092023-F.webp",
+        "descrip": "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+        "puntuacion": "5.0",
+        "prom": "FULL",
+        "precio": "$60.00",
+        "estado": "venta"
+    },
+    {
+        "id": "4",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_630797-CBT47159184391_082021-F.webp",
+        "descrip": "Funda De Cuero Para Xiaomi Pad 5/pad 5 Pro/pad 5 Pro 5g 11",
+        "puntuacion": "5.0",
+        "prom": "FULL",
+        "precio": "$88.007",
+        "estado": "venta"
+    },
+    {
+        "id": "5",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_752122-MCO70645356754_072023-F.webp",
+        "descrip": "Batería Battery Para iPhone X iPhone 10 2716mah",
+        "puntuacion": "5.0",
+        "prom": "FULL",
+        "precio": "$64.990",
+        "estado": "venta"
+    },
+    {
+        "id": "6",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_864432-MLA54954927923_042023-F.webp",
+        "descrip": "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+        "puntuacion": "5.0",
+        "prom": "FULL",
+        "precio": "$59.000",
+        "estado": "venta"
+    },
+    {
+        "id": "7",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_752122-MCO70645356754_072023-F.webp",
+        "descrip": "Batería Battery Para iPhone X iPhone 10 2716mah",
+        "puntuacion": "5.0",
+        "precio": "$64.990 ",
+        "prom": "FULL",
+        "estado": "venta"
+    },
+    {
+        "id": "8",
+        "image": "/prueba.png",
+        "descrip": "Oferta Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+        "puntuacion": "4.0",
+        "prom": "SUPER OFERTA",
+        "precio": "$79.900",
+        "estado": "oferta"
+    },
+    {
+        "id": "9",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_864432-MLA54954927923_042023-F.webp",
+        "descrip": "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+        "puntuacion": "5.0",
+        "prom": "SUPER OFERTA",
+        "precio": "$59.000",
+        "estado": "oferta"
+    },
+    {
+        "id": "10",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_893018-CBT71987335139_092023-F.webp",
+        "descrip": "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+        "puntuacion": "5.0",
+        "prom": "SUPER OFERTA",
+        "precio": "$60.00",
+        "estado": "oferta"
+    },
+    {
+        "id": "11",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_630797-CBT47159184391_082021-F.webp",
+        "descrip": "Funda De Cuero Para Xiaomi Pad 5/pad 5 Pro/pad 5 Pro 5g 11",
+        "puntuacion": "5.0",
+        "prom": "SUPER OFERTA",
+        "precio": "$88.007",
+        "estado": "oferta"
+    },
+    {
+        "id": "12",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_752122-MCO70645356754_072023-F.webp",
+        "descrip": "Batería Battery Para iPhone X iPhone 10 2716mah",
+        "puntuacion": "5.0",
+        "prom": "SUPER OFERTA",
+        "precio": "$64.990",
+        "estado": "oferta"
+    },
+    {
+        "id": "13",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_864432-MLA54954927923_042023-F.webp",
+        "descrip": "Apple Watch Series 7 GPS, Aluminium Case, Starlight Sport",
+        "puntuacion": "5.0",
+        "prom": "SUPER OFERTA",
+        "precio": "$59.000",
+        "estado": "oferta"
+    },
+    {
+        "id": "14",
+        "image": "https://http2.mlstatic.com/D_NQ_NP_2X_752122-MCO70645356754_072023-F.webp",
+        "descrip": "Batería Battery Para iPhone X iPhone 10 2716mah",
+        "puntuacion": "5.0",
+        "prom": "SUPER OFERTA",
+        "precio": "$64.990 ",
+        "estado": "oferta"
+    }
+]

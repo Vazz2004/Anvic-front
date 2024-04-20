@@ -1,0 +1,16 @@
+/* swiper-styles.css */
+
+/* Estilo para las flechas */
+.swiper-button-prev,
+.swiper-button-next {
+    color: rgba(165, 163, 163, 0.767);
+    font-size: 2px;
+    /* Cambia el color de las flechas a gris */
+}
+
+/* Estilo cuando se pasa el ratón sobre las flechas */
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    color: darkgray;
+    /* Cambia el color al pasar el ratón sobre las flechas */
+}
