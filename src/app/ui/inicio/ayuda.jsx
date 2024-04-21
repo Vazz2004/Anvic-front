@@ -1,13 +1,13 @@
 'use client'
 // App.js
 
-import React from 'react';
+import React from 'react'
 
 const AyudaComponente = () => {
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // Lógica para enviar el formulario de contacto
-  };
+  }
 
   return (
     <div className="bg-white shadow-lg rounded-lg p-6">
@@ -74,8 +74,8 @@ const AyudaComponente = () => {
         </form>
       </div>
     </div>
-  );
-};
+  )
+}
 
 const App = () => {
   return (
@@ -98,7 +98,7 @@ const App = () => {
         </section>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App

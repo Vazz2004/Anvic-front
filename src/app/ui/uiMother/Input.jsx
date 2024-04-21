@@ -1,7 +1,7 @@
-import { TextField } from '@mui/material';
+import { TextField } from '@mui/material'
 
-export default function Input(props) {
-  const { id, label, name, value, onChange, required, disabled, type} = props;
+export default function Input (props) {
+  const { id, label, name, value, onChange, required, disabled, type } = props
   return (
         <TextField
       id={id}
@@ -14,5 +14,5 @@ export default function Input(props) {
       type={type}
       fullWidth
     />
-  );
+  )
 }

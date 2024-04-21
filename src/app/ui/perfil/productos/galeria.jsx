@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-export default function Galeria({ datos }) {
-    return (
+export default function Galeria ({ datos }) {
+  return (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mx-10 mt-10">
             {datos.map((url, index) => ( // Cambiamos "objeto" a "url" ya que ahora datos es un array de URLs directamente
                 <div key={index}>
@@ -9,5 +9,5 @@ export default function Galeria({ datos }) {
                 </div>
             ))}
         </div>
-    );
+  )
 }

@@ -1,6 +1,6 @@
 import { FormControl, InputLabel, MenuItem, Select } from '@mui/material'
 
-function Selects(props) {
+function Selects (props) {
   const { id, label, name, onChange, value, items, required, disabled } = props
   return (
 

@@ -1,7 +1,7 @@
-import Nav from '../../ui/perfil/nav.jsx';
+import Nav from '../../ui/perfil/nav.jsx'
 import Cards from '../../ui/perfil/productos/mostarCarta.jsx'
 import '../../globals.css'
-export default function Page() {
+export default function Page () {
   return (
     <>
   <div className='flex items-start w-full'>
@@ -13,5 +13,5 @@ export default function Page() {
   </div>
 
     </>
-  );
+  )
 }

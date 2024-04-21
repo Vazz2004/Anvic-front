@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react'
 
-export default function useSelectRow() {
+export default function useSelectRow () {
   const [selectRow, setSelectRow] = useState({})
 
   const saveSelectRow = (row) => {

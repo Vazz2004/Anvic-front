@@ -1,38 +1,38 @@
-import React from "react";
+import React from 'react'
 
 const Alerta = ({ tipo, mensaje }) => {
-  let bgColor, textColor, borderColor, iconColor;
+  let bgColor, textColor, borderColor, iconColor
 
   switch (tipo) {
-    case "info":
-      bgColor = "bg-blue-50";
-      textColor = "text-blue-800";
-      borderColor = "border-blue-300";
-      iconColor = "text-blue-400";
-      break;
-    case "danger":
-      bgColor = "bg-red-50";
-      textColor = "text-red-800";
-      borderColor = "border-red-300";
-      iconColor = "text-red-400";
-      break;
-    case "success":
-      bgColor = "bg-green-50";
-      textColor = "text-green-800";
-      borderColor = "border-green-300";
-      iconColor = "text-green-400";
-      break;
-    case "warning":
-      bgColor = "bg-yellow-50";
-      textColor = "text-yellow-800";
-      borderColor = "border-yellow-300";
-      iconColor = "text-yellow-300";
-      break;
+    case 'info':
+      bgColor = 'bg-blue-50'
+      textColor = 'text-blue-800'
+      borderColor = 'border-blue-300'
+      iconColor = 'text-blue-400'
+      break
+    case 'danger':
+      bgColor = 'bg-red-50'
+      textColor = 'text-red-800'
+      borderColor = 'border-red-300'
+      iconColor = 'text-red-400'
+      break
+    case 'success':
+      bgColor = 'bg-green-50'
+      textColor = 'text-green-800'
+      borderColor = 'border-green-300'
+      iconColor = 'text-green-400'
+      break
+    case 'warning':
+      bgColor = 'bg-yellow-50'
+      textColor = 'text-yellow-800'
+      borderColor = 'border-yellow-300'
+      iconColor = 'text-yellow-300'
+      break
     default:
-      bgColor = "bg-gray-50";
-      textColor = "text-gray-800";
-      borderColor = "border-gray-300";
-      iconColor = "text-gray-300";
+      bgColor = 'bg-gray-50'
+      textColor = 'text-gray-800'
+      borderColor = 'border-gray-300'
+      iconColor = 'text-gray-300'
   }
 
   return (
@@ -51,7 +51,7 @@ const Alerta = ({ tipo, mensaje }) => {
       </svg>
       <span className="font-medium">{mensaje}</span>
     </div>
-  );
-};
+  )
+}
 
-export default Alerta;
+export default Alerta

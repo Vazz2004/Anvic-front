@@ -11,7 +11,7 @@ export default function useForm (defaultValues) {
     })
   }
 
-  const handleInputChangeDate = (name,value) => {
+  const handleInputChangeDate = (name, value) => {
     setValues({
       ...values,
       [name]: value

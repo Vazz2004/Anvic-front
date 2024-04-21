@@ -8,295 +8,257 @@ import { useHabilitar } from '../../../hooks/useHabilitar'
 import React, { useEffect, useState } from 'react'
 import useForm from '../../../hooks/useForm'
 import { PlusIcon } from '@heroicons/react/24/outline'
-import { api } from '../../../../api/api';
+import { api } from '../../../../api/api'
 import Alerta from '../../alertas/alert'
 import Galeria from './galeria'
 
 const defaultValues = {
-    tituloProducto: '',
-    idCategoria: '',
-    marca: '',
-    precio: '',
-    fecha: (new Date()).toISOString().substr(0, 10),
-    fichaTecnica: {},
-    idTipoProducto: ''
+  tituloProducto: '',
+  idCategoria: '',
+  marca: '',
+  precio: '',
+  fecha: (new Date()).toISOString().substr(0, 10),
+  fichaTecnica: {},
+  idTipoProducto: ''
 }
 
-
-
-
-
-
-
-
 const FormProducto = (props) => {
-    const { id, label, bgColor, icon, tooltip, actualizar, dato, successMessage, errorMessage } = props
-    const { deshabilitado, validarId } = useHabilitar({ id })
-    const [open, setOpen] = useState(false)
-    const { values, setValues, handleInputChange } = useForm(defaultValues)
-    const [categorias, setCategorias] = useState([])
-    const [idCategoria, setIdCategoria] = useState([values.idCategoria]);
-    const [color, setColor] = useState([])
-    const [caract, setCaract] = useState([]);
-    const [file, setFile] = useState(null);
-    const [image, setImage] = useState({
-        url: ''
-    });
-    const [selectedColor, setSelectedColor] = useState('')
-    const [tipoProducto, setTipoProducto] = useState([])
-    const [errorCaract, setErrorCaract] = useState(false)
-    const [errorCampos, setErrorCampos] = useState(false)
-    const [errorTecnicas, setErrorTecnicas] = useState(false)
-    const [mostarrErorrColores, setMostarrErorrColores] = useState(false)
-    const [mostarrValidacion, setMOstarrValidacion] = useState(false)
-    const [imagenesProducto, setImagenesProducto] = useState('')
-    //Seteo mensaje
-    const [errorColores, setErrorColores] = useState('')
+  const { id, label, bgColor, icon, tooltip } = props
+  const { deshabilitado, validarId } = useHabilitar({ id })
+  const [open, setOpen] = useState(false)
+  const { values, setValues, handleInputChange } = useForm(defaultValues)
+  const [categorias, setCategorias] = useState([])
+  const [idCategoria] = useState([values.idCategoria])
+  const [color, setColor] = useState([])
+  const [caract, setCaract] = useState([])
+  const [file, setFile] = useState(null)
+  const [setImage] = useState({
+    url: ''
+  })
+  const [setSelectedColor] = useState('')
+  const [tipoProducto, setTipoProducto] = useState([])
+  const [errorCaract, setErrorCaract] = useState(false)
+  const [errorCampos, setErrorCampos] = useState(false)
+  const [errorTecnicas, setErrorTecnicas] = useState(false)
+  const [mostarrErorrColores, setMostarrErorrColores] = useState(false)
+  const [mostarrValidacion, setMOstarrValidacion] = useState(false)
+  const [imagenesProducto, setImagenesProducto] = useState('')
+  // Seteo mensaje
+  const [errorColores, setErrorColores] = useState('')
 
-    // Estado para msotrar los modulos del formulario
-    const [mostrarElemento1, setMostrarElemento1] = useState(true)
-    const [mostrarElemento2, setMostrarElemento2] = useState(false)
-    const [mostrarElemento3, setMostrarElemento3] = useState(false)
-    const [mostrarElemento4, setMostrarElemento4] = useState(false)
+  // Estado para msotrar los modulos del formulario
+  const [mostrarElemento1, setMostrarElemento1] = useState(true)
+  const [mostrarElemento2, setMostrarElemento2] = useState(false)
+  const [mostrarElemento3, setMostrarElemento3] = useState(false)
+  const [mostrarElemento4, setMostrarElemento4] = useState(false)
 
-    const [valuesColor, setValuesColor] = React.useState({
-        idColor: '',
-        cantidad: ''
-    })
+  const [valuesColor, setValuesColor] = React.useState({
+    idColor: '',
+    cantidad: ''
+  })
 
-
-
-    //Peticiones
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await api.get('producto/categorias')
-                setCategorias(response.data)
-            } catch (error) {
-                console.log('Error al obtener las categorías');
-            }
-        }
-        fetchData();
-    }, [])
-
-
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await api.get('producto/colores')
-                setColor(response.data)
-            } catch (error) {
-                console.log('Error al obtener las categorías');
-            }
-        }
-        fetchData();
-    }, [])
-
-
-
-    const handleCaract = async (e) => {
-        e.preventDefault();
-        setMostrarElemento2(false)
-        setMostrarElemento3(true)
-        try {
-            const response = await api.post('producto/create', values);
-        } catch (error) {
-            console.log('error en create', error);
-        }
-
-
-
+  // Peticiones
+  useEffect(() => {
+    async function fetchData () {
+      try {
+        const response = await api.get('producto/categorias')
+        setCategorias(response.data)
+      } catch (error) {
+        console.log('Error al obtener las categorías')
+      }
     }
+    fetchData()
+  }, [])
 
-
-    useEffect(() => {
-        async function feachData() {
-            try {
-                const response = await api.get('producto/tipo-producto')
-                setTipoProducto(response.data)
-            } catch (error) {
-                console.log('error al obtener los tipo e productos', error)
-            }
-        }
-        feachData()
-    }, [])
-
-
-
-
-    const handleSubmitColor = async (e) => {
-        e.preventDefault()
-        try {
-            const response = await api.post('producto/create-color-producto', valuesColor);
-            setMOstarrValidacion(true);
-            ocultarValidacion();
-            setErrorCampos(false);
-            setMostarrErorrColores(false)
-
-        } catch (error) {
-            setMostarrErorrColores(true)
-            setMOstarrValidacion(false)
-            setErrorColores(error.response.data.message)
-        }
+  useEffect(() => {
+    async function fetchData () {
+      try {
+        const response = await api.get('producto/colores')
+        setColor(response.data)
+      } catch (error) {
+        console.log('Error al obtener las categorías')
+      }
     }
+    fetchData()
+  }, [])
 
-    const handleSubmitProduc = async (e) => {
-        e.preventDefault()
-        // Validar campos antes de enviar
-        if (!values.tituloProducto || !values.productoDescripcion || !values.marca || !values.precio || !values.idCategoria || !values.idTipoProducto) {
-            // Mostrar mensaje de error o realizar alguna acción
-            setErrorCampos(true)
-            return;
-        } else if (caract.some(dato => !values[`fichaTecnica-${dato.caracteristica_tecnica}`])) {
-            // Si alguno de los campos de características técnicas está vacío
-            setErrorTecnicas(true);
-            return;
-        } else {
-            try {
-                if (idCategoria) {
-                    const response = await api.get(`producto/caracteristicas/${values.idCategoria}`);
-                    setMostrarElemento1(false)
-                    setMostrarElemento2(true)
-                    setErrorCampos(false)
-                    setErrorCaract(false)
-                    setCaract(response.data);
-                }
-            } catch (error) {
-                setErrorCaract(true)
-            }
-        }
-
+  const handleCaract = async (e) => {
+    e.preventDefault()
+    setMostrarElemento2(false)
+    setMostrarElemento3(true)
+    try {
+      const response = await api.post('producto/create', values)
+      return response
+    } catch (error) {
+      console.log('error en create', error)
     }
+  }
 
-    const handleSubmitImage = async (e) => {
-        e.preventDefault();
-
-        try {
-            console.log("uploading");
-
-            // Verifica si se ha seleccionado un archivo
-            if (!file) {
-                console.log("No file selected");
-                return;
-            }
-
-            const result = await uploadFile(file);
-            setImage(result);
-
-
-            // Si la carga de la imagen ha sido exitosa, envía la imagen al servidor
-            if (result) {
-                console.log(result)
-                const response = await api.post('producto/create-img', {
-                    url: result
-                });
-                async function fetchData() {
-                    try {
-                        const response = await api.get('producto/ver-img');
-                        const urls = response.data
-                            .flat() // Aplanar el array para eliminar arrays anidados
-                            .filter(url => url !== null) // Filtrar las URL que no son nulas
-                            .map(item => item.url_imagen); // Mapear los objetos a sus URLs de imagen
-                        console.log('URLs de imagen:', urls);
-                        setImagenesProducto(urls); // Ahora setImagenesProducto recibe un array de URLs
-                    } catch (error) {
-                        console.error(error);
-                    }
-                }
-
-                fetchData();
-
-            }
-        } catch (error) {
-            console.log("Error:", error);
-        }
-    };
-
-
-
-
-
-    const handleInputChangeFicha = (event) => {
-        const { name, value } = event.target;
-        if (name.startsWith('fichaTecnica-')) {
-            // Si el nombre del input comienza con 'fichaTecnica-',
-            // significa que es un campo de características técnicas.
-            // Extraemos el nombre de la característica técnica del nombre del input.
-            const caracteristica = name.substring(14); // 14 es la longitud de 'fichaTecnica-'
-            // Actualizamos el estado 'values' con la nueva característica técnica.
-            setValues(prevValues => ({
-                ...prevValues,
-                fichaTecnica: {
-                    ...prevValues.fichaTecnica,
-                    [caracteristica]: value
-                }
-            }));
-        } else {
-            // Si no es un campo de características técnicas, actualizamos directamente 'values'.
-            setValues(prevValues => ({
-                ...prevValues,
-                [name]: value
-            }));
-        }
-    };
-
-    const ocultarValidacion = () => {
-        setTimeout(() => {
-            setMOstarrValidacion(false);
-        }, 3000); // 3000 milisegundos = 3 segundos
-    };
-
-    const handleModal = () => {
-        setOpen(true)
+  useEffect(() => {
+    async function feachData () {
+      try {
+        const response = await api.get('producto/tipo-producto')
+        setTipoProducto(response.data)
+      } catch (error) {
+        console.log('error al obtener los tipo e productos', error)
+      }
     }
+    feachData()
+  }, [])
 
-    const handleClose = () => {
-        setOpen(false)
+  const handleSubmitColor = async (e) => {
+    e.preventDefault()
+    try {
+      const response = await api.post('producto/create-color-producto', valuesColor)
+      setMOstarrValidacion(true)
+      ocultarValidacion()
+      setErrorCampos(false)
+      setMostarrErorrColores(false)
+      return response
+    } catch (error) {
+      setMostarrErorrColores(true)
+      setMOstarrValidacion(false)
+      setErrorColores(error.response.data.message)
     }
+  }
 
+  const handleSubmitProduc = async (e) => {
+    e.preventDefault()
+    // Validar campos antes de enviar
+    if (!values.tituloProducto || !values.productoDescripcion || !values.marca || !values.precio || !values.idCategoria || !values.idTipoProducto) {
+      // Mostrar mensaje de error o realizar alguna acción
+      setErrorCampos(true)
+    } else if (caract.some(dato => !values[`fichaTecnica-${dato.caracteristica_tecnica}`])) {
+      // Si alguno de los campos de características técnicas está vacío
+      setErrorTecnicas(true)
+    } else {
+      try {
+        if (idCategoria) {
+          const response = await api.get(`producto/caracteristicas/${values.idCategoria}`)
+          setMostrarElemento1(false)
+          setMostrarElemento2(true)
+          setErrorCampos(false)
+          setErrorCaract(false)
+          setCaract(response.data)
+        }
+      } catch (error) {
+        setErrorCaract(true)
+      }
+    }
+  }
 
-    const handleInputImage = (e) => {
-        setImage({
-            url: e.target.value
+  const handleSubmitImage = async (e) => {
+    e.preventDefault()
+
+    try {
+      console.log('uploading')
+
+      // Verifica si se ha seleccionado un archivo
+      if (!file) {
+        console.log('No file selected')
+        return
+      }
+
+      const result = await uploadFile(file)
+      setImage(result)
+
+      // Si la carga de la imagen ha sido exitosa, envía la imagen al servidor
+      if (result) {
+        console.log(result)
+        const response = await api.post('producto/create-img', {
+          url: result
         })
-    }
+        if (response) {
+          async function fetchData () {
+            try {
+              const response = await api.get('producto/ver-img')
+              const urls = response.data
+                .flat() // Aplanar el array para eliminar arrays anidados
+                .filter(url => url !== null) // Filtrar las URL que no son nulas
+                .map(item => item.url_imagen) // Mapear los objetos a sus URLs de imagen
+              console.log('URLs de imagen:', urls)
+              setImagenesProducto(urls) // Ahora setImagenesProducto recibe un array de URLs
+            } catch (error) {
+              console.error(error)
+            }
+          }
 
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        console.log('enviado')
-
-
-
-        console.log('enviado')
-    };
-
-
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0]);
-    };
-
-    const handleInputChangeColor = async (e) => {
-        const { name, value } = e.target;
-        setValuesColor({ ...valuesColor, [name]: value });
-    }
-
-    const handleProductColor = (e) => {
-        e.preventDefault()
-        if (!valuesColor.idColor || !valuesColor.cantidad) {
-            setErrorCampos(true)
-        } else {
-            setMostrarElemento3(false)
-            setMostrarElemento4(true)
-            setImagenesProducto([
-                'https://firebasestorage.googleapis.com/v0/b/anvic-image.appspot.com/o/imagenEjemplo.webp?alt=media&token=584a3ff4-9209-4042-b82c-13674cab8607'
-            ]);
+          fetchData()
         }
-
+      }
+    } catch (error) {
+      console.log('Error:', error)
     }
+  }
 
+  const handleInputChangeFicha = (event) => {
+    const { name, value } = event.target
+    if (name.startsWith('fichaTecnica-')) {
+      // Si el nombre del input comienza con 'fichaTecnica-',
+      // significa que es un campo de características técnicas.
+      // Extraemos el nombre de la característica técnica del nombre del input.
+      const caracteristica = name.substring(14) // 14 es la longitud de 'fichaTecnica-'
+      // Actualizamos el estado 'values' con la nueva característica técnica.
+      setValues(prevValues => ({
+        ...prevValues,
+        fichaTecnica: {
+          ...prevValues.fichaTecnica,
+          [caracteristica]: value
+        }
+      }))
+    } else {
+      // Si no es un campo de características técnicas, actualizamos directamente 'values'.
+      setValues(prevValues => ({
+        ...prevValues,
+        [name]: value
+      }))
+    }
+  }
 
+  const ocultarValidacion = () => {
+    setTimeout(() => {
+      setMOstarrValidacion(false)
+    }, 3000) // 3000 milisegundos = 3 segundos
+  }
 
-    return (
+  const handleModal = () => {
+    setOpen(true)
+  }
+
+  const handleClose = () => {
+    setOpen(false)
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    console.log('enviado')
+
+    console.log('enviado')
+  }
+
+  const handleFileChange = (e) => {
+    setFile(e.target.files[0])
+  }
+
+  const handleInputChangeColor = async (e) => {
+    const { name, value } = e.target
+    setValuesColor({ ...valuesColor, [name]: value })
+  }
+
+  const handleProductColor = (e) => {
+    e.preventDefault()
+    if (!valuesColor.idColor || !valuesColor.cantidad) {
+      setErrorCampos(true)
+    } else {
+      setMostrarElemento3(false)
+      setMostrarElemento4(true)
+      setImagenesProducto([
+        'https://firebasestorage.googleapis.com/v0/b/anvic-image.appspot.com/o/imagenEjemplo.webp?alt=media&token=584a3ff4-9209-4042-b82c-13674cab8607'
+      ])
+    }
+  }
+
+  return (
         <div>
             <Boton
                 onClick={handleModal}
@@ -374,7 +336,8 @@ const FormProducto = (props) => {
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={12}>
-                                    {validarId ? (
+                                    {validarId
+                                      ? (
                                         <Input
                                             id='idCategoria'
                                             fullWidth
@@ -385,7 +348,8 @@ const FormProducto = (props) => {
                                             disabled={validarId}
                                             required
                                         />
-                                    ) : (
+                                        )
+                                      : (
                                         <Selects
                                             id='idCategoria'
                                             label='Categoria'
@@ -396,9 +360,8 @@ const FormProducto = (props) => {
                                             disabled={validarId}
                                             required
                                         />
-                                    )}
+                                        )}
                                 </Grid>
-
 
                                 <Grid item xs={12} sm={12}>
                                     {validarId ? (
@@ -437,9 +400,7 @@ const FormProducto = (props) => {
                             </>
                         )}
 
-
                         {/** modeulo 2 */}
-
 
                         {mostrarElemento2 && (
                             <>
@@ -488,7 +449,6 @@ const FormProducto = (props) => {
                                     </div>
                                 )}
 
-
                                 <Grid Grid item xs={12} sm={12}>
                                     {validarId ? (
                                         <Input
@@ -498,7 +458,7 @@ const FormProducto = (props) => {
                                             name='idColot' // Aquí debe ser 'idColor'
                                             value={valuesColor.idColor}
                                             onChange={handleInputChangeColor}
-                                            disabled={validarId ? true : false}
+                                            disabled={!!validarId}
                                             required
                                         />
                                     ) : (
@@ -508,9 +468,9 @@ const FormProducto = (props) => {
                                             name='idColor'
                                             value={valuesColor.idColor} // Aquí debes usar valuesColor en lugar de values
                                             onChange={(e) => {
-                                                handleInputChange(e); // Actualiza el estado principal
-                                                handleInputChangeColor(e); // Actualiza el estado para el color
-                                                setSelectedColor(e.target.value);
+                                              handleInputChange(e) // Actualiza el estado principal
+                                              handleInputChangeColor(e) // Actualiza el estado para el color
+                                              setSelectedColor(e.target.value)
                                             }}
                                             items={color}
                                             disabled={validarId}
@@ -518,7 +478,6 @@ const FormProducto = (props) => {
                                         />
                                     )}
                                 </Grid>
-
 
                                 <Grid item xs={12} sm={10}>
                                     <Input
@@ -531,9 +490,6 @@ const FormProducto = (props) => {
                                         onChange={handleInputChangeColor}
                                     />
                                 </Grid>
-
-
-
 
                                 <Grid item xs={12} sm={2}>
                                     <Boton
@@ -587,17 +543,16 @@ const FormProducto = (props) => {
                                     </button>
                                 </Grid>
 
-
                                 <Grid item xs={12} sm={12}>
-                                    {imagenesProducto.length > 0 ? (
+                                    {imagenesProducto.length > 0
+                                      ? (
                                         <Galeria datos={imagenesProducto} />
-                                    ) : (
+                                        )
+                                      : (
                                         <p>No hay imágenes disponibles para este producto.</p>
-                                    )}
+                                        )}
 
                                 </Grid>
-
-
 
                                 <Grid item xs={12} sm={12}>
                                     <button
@@ -608,8 +563,6 @@ const FormProducto = (props) => {
                                     </button>
                                 </Grid>
 
-
-
                             </>
                         )}
 
@@ -617,7 +570,7 @@ const FormProducto = (props) => {
                 </form>
             </Modal>
         </div >
-    )
+  )
 }
 
 export default FormProducto

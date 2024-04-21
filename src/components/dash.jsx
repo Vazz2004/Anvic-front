@@ -5,14 +5,12 @@
 * @see https://v0.dev/t/cTocnGFSAv2
 * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
 */
-import Link from "next/link"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
-import { CardTitle, CardHeader, CardContent, Card } from "@/components/ui/card"
-import { ResponsiveBar } from "@nivo/bar"
-import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "@/components/ui/table"
+import { Button } from '@/components/ui/button'
+import { CardTitle, CardHeader, CardContent, Card } from '@/components/ui/card'
+import { ResponsiveBar } from '@nivo/bar'
+import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from '@/components/ui/table'
 
-export function Dash() {
+export function Dash () {
   return (
     (<div className="flex flex-col w-full min-h-screen">
       <main
@@ -115,8 +113,8 @@ export function Dash() {
                       height="40"
                       src="/placeholder.svg"
                       style={{
-                        aspectRatio: "40/40",
-                        objectFit: "cover",
+                        aspectRatio: '40/40',
+                        objectFit: 'cover'
                       }}
                       width="40" />
                     <div className="font-medium">Blue T-Shirt</div>
@@ -133,8 +131,8 @@ export function Dash() {
                       height="40"
                       src="/placeholder.svg"
                       style={{
-                        aspectRatio: "40/40",
-                        objectFit: "cover",
+                        aspectRatio: '40/40',
+                        objectFit: 'cover'
                       }}
                       width="40" />
                     <div className="font-medium">Red Shoes</div>
@@ -151,8 +149,8 @@ export function Dash() {
                       height="40"
                       src="/placeholder.svg"
                       style={{
-                        aspectRatio: "40/40",
-                        objectFit: "cover",
+                        aspectRatio: '40/40',
+                        objectFit: 'cover'
                       }}
                       width="40" />
                     <div className="font-medium">Black Hat</div>
@@ -169,8 +167,8 @@ export function Dash() {
                       height="40"
                       src="/placeholder.svg"
                       style={{
-                        aspectRatio: "40/40",
-                        objectFit: "cover",
+                        aspectRatio: '40/40',
+                        objectFit: 'cover'
                       }}
                       width="40" />
                     <div className="font-medium">White Jeans</div>
@@ -187,8 +185,8 @@ export function Dash() {
                       height="40"
                       src="/placeholder.svg"
                       style={{
-                        aspectRatio: "40/40",
-                        objectFit: "cover",
+                        aspectRatio: '40/40',
+                        objectFit: 'cover'
                       }}
                       width="40" />
                     <div className="font-medium">Green Dress</div>
@@ -203,63 +201,62 @@ export function Dash() {
         </Card>
       </main>
     </div>)
-  );
+  )
 }
 
-function BarChart(props) {
+function BarChart (props) {
   return (
     (<div {...props}>
       <ResponsiveBar
         data={[
-          { name: "Jan", count: 111 },
-          { name: "Feb", count: 157 },
-          { name: "Mar", count: 129 },
-          { name: "Apr", count: 150 },
-          { name: "May", count: 119 },
-          { name: "Jun", count: 72 },
+          { name: 'Jan', count: 111 },
+          { name: 'Feb', count: 157 },
+          { name: 'Mar', count: 129 },
+          { name: 'Apr', count: 150 },
+          { name: 'May', count: 119 },
+          { name: 'Jun', count: 72 }
         ]}
-        keys={["count"]}
+        keys={['count']}
         indexBy="name"
         margin={{ top: 0, right: 0, bottom: 40, left: 40 }}
         padding={0.3}
-        colors={["#2563eb"]}
+        colors={['#2563eb']}
         axisBottom={{
           tickSize: 0,
-          tickPadding: 16,
+          tickPadding: 16
         }}
         axisLeft={{
           tickSize: 0,
           tickValues: 4,
-          tickPadding: 16,
+          tickPadding: 16
         }}
         gridYValues={4}
         theme={{
           tooltip: {
             chip: {
-              borderRadius: "9999px",
+              borderRadius: '9999px'
             },
             container: {
-              fontSize: "12px",
-              textTransform: "capitalize",
-              borderRadius: "6px",
-            },
+              fontSize: '12px',
+              textTransform: 'capitalize',
+              borderRadius: '6px'
+            }
           },
           grid: {
             line: {
-              stroke: "#f3f4f6",
-            },
-          },
+              stroke: '#f3f4f6'
+            }
+          }
         }}
         tooltipLabel={({ id }) => `${id}`}
         enableLabel={false}
         role="application"
         ariaLabel="A bar chart showing data" />
     </div>)
-  );
+  )
 }
 
-
-function CreditCardIcon(props) {
+function CreditCardIcon (props) {
   return (
     (<svg
       {...props}
@@ -275,11 +272,10 @@ function CreditCardIcon(props) {
       <rect width="20" height="14" x="2" y="5" rx="2" />
       <line x1="2" x2="22" y1="10" y2="10" />
     </svg>)
-  );
+  )
 }
 
-
-function DollarSignIcon(props) {
+function DollarSignIcon (props) {
   return (
     (<svg
       {...props}
@@ -295,32 +291,10 @@ function DollarSignIcon(props) {
       <line x1="12" x2="12" y1="2" y2="22" />
       <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
     </svg>)
-  );
+  )
 }
 
-
-function Package2Icon(props) {
-  return (
-    (<svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round">
-      <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z" />
-      <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9" />
-      <path d="M12 3v6" />
-    </svg>)
-  );
-}
-
-
-function RefreshCwIcon(props) {
+function RefreshCwIcon (props) {
   return (
     (<svg
       {...props}
@@ -338,31 +312,10 @@ function RefreshCwIcon(props) {
       <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16" />
       <path d="M8 16H3v5" />
     </svg>)
-  );
+  )
 }
 
-
-function SearchIcon(props) {
-  return (
-    (<svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round">
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.3-4.3" />
-    </svg>)
-  );
-}
-
-
-function StarIcon(props) {
+function StarIcon (props) {
   return (
     (<svg
       {...props}
@@ -378,11 +331,10 @@ function StarIcon(props) {
       <polygon
         points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
     </svg>)
-  );
+  )
 }
 
-
-function UsersIcon(props) {
+function UsersIcon (props) {
   return (
     (<svg
       {...props}
@@ -400,5 +352,5 @@ function UsersIcon(props) {
       <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
       <path d="M16 3.13a4 4 0 0 1 0 7.75" />
     </svg>)
-  );
+  )
 }

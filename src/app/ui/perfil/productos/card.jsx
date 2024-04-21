@@ -1,23 +1,22 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
-import TablaProductos from '../productsTable';
-import Link from "next/link";
+import React, { useState } from 'react'
+import Modal from 'react-modal'
+import TablaProductos from '../productsTable'
 
 const Card = ({ categoria, title, content, imageSrc }) => {
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
-    // Función para abrir el modal
-    const openModal = () => {
-        console.log(categoria)
-        setModalIsOpen(true);
-    };
+  // Función para abrir el modal
+  const openModal = () => {
+    console.log(categoria)
+    setModalIsOpen(true)
+  }
 
-    // Función para cerrar el modal
-    const closeModal = () => {
-        setModalIsOpen(false);
-    };
+  // Función para cerrar el modal
+  const closeModal = () => {
+    setModalIsOpen(false)
+  }
 
-    return (
+  return (
         <div className="grid gap-5 relative group border border-gray-300 rounded-lg p-10 h-80  ">
             <img
                 alt='img'
@@ -36,26 +35,25 @@ const Card = ({ categoria, title, content, imageSrc }) => {
                 </svg>
             </button>
 
-
             {/* Modal para mostrar los productos */}
             <Modal
                 isOpen={modalIsOpen}
                 onRequestClose={closeModal}
                 style={{
-                    overlay: {
-                        backgroundColor: 'rgba(0, 0, 0, 0.5)' // Fondo semi-transparente
-                    },
-                    content: {
-                        backgroundColor: 'transparent', // Fondo transparente
-                        border: 'none', // Sin borde
-                        padding: 0, // Sin relleno
-                        top: '50%', // Centrar verticalmente
-                        left: '50%', // Centrar horizontalmente
-                        right: 'auto',
-                        bottom: 'auto',
-                        transform: 'translate(-50%, -50%)', // Centrar el modal
-                        overflow: 'visible', // Permitir que el contenido sobresalga del modal
-                    }
+                  overlay: {
+                    backgroundColor: 'rgba(0, 0, 0, 0.5)' // Fondo semi-transparente
+                  },
+                  content: {
+                    backgroundColor: 'transparent', // Fondo transparente
+                    border: 'none', // Sin borde
+                    padding: 0, // Sin relleno
+                    top: '50%', // Centrar verticalmente
+                    left: '50%', // Centrar horizontalmente
+                    right: 'auto',
+                    bottom: 'auto',
+                    transform: 'translate(-50%, -50%)', // Centrar el modal
+                    overflow: 'visible' // Permitir que el contenido sobresalga del modal
+                  }
                 }}
             >
                 <div style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '5px' }}>
@@ -71,7 +69,7 @@ const Card = ({ categoria, title, content, imageSrc }) => {
             </Modal>
 
         </div>
-    );
-};
+  )
+}
 
-export default Card;
+export default Card

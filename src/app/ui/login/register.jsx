@@ -1,92 +1,89 @@
 'use client'
-import React, { use, useState } from "react";
-import axios from "axios";
-import Alerta from "../alertas/alert";
-
-
+import React, { useState } from 'react'
+import axios from 'axios'
+import Alerta from '../alertas/alert'
 
 const Registro = () => {
-  const [contrasena, setContrasena] = useState("");
-  const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
-  const [correo, setCorreo] = useState("");
-  const [error, setError] = useState("")
-  const [confirmacionContrasena, setConfirmacionContrasena] = useState("");
-  const [errorCorreo, setErrorCorreo] = useState("");
-  const [errorContrasena, setErrorContrasena] = useState("")
+  const [contrasena, setContrasena] = useState('')
+  const [nombre, setNombre] = useState('')
+  const [apellido, setApellido] = useState('')
+  const [correo, setCorreo] = useState('')
+  const [setError] = useState('')
+  const [confirmacionContrasena, setConfirmacionContrasena] = useState('')
+  const [errorCorreo, setErrorCorreo] = useState('')
+  const [errorContrasena, setErrorContrasena] = useState('')
 
   const handleCorreoChange = (event) => {
-    setCorreo(event.target.value);
+    setCorreo(event.target.value)
     setErrorCorreo(null)
-  };
+  }
 
   const handleContrasenaChange = (event) => {
-    setContrasena(event.target.value);
+    setContrasena(event.target.value)
     setErrorContrasena(null)
-  };
+  }
 
   const handleConfirmacionContrasenaChange = (event) => {
-    setConfirmacionContrasena(event.target.value);
-  };
+    setConfirmacionContrasena(event.target.value)
+  }
 
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault()
 
-    const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const emailFormat = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!correo.match(emailFormat)) {
-      setErrorCorreo("El correo electrónico no tiene un formato válido");
-      return;
+      setErrorCorreo('El correo electrónico no tiene un formato válido')
+      return
     } else {
       setErrorCorreo(false)
     }
 
     if (contrasena !== confirmacionContrasena) {
-      setErrorContrasena("Las contraseñas no coinciden");
-      return;
+      setErrorContrasena('Las contraseñas no coinciden')
+      return
     } else {
       setErrorContrasena(false)
     }
 
     if (contrasena.length < 8) {
-      setErrorContrasena("La contraseña debe tener al menos 8 caracteres");
-      return;
+      setErrorContrasena('La contraseña debe tener al menos 8 caracteres')
+      return
     } else {
       setErrorContrasena(false)
     }
 
-
     try {
-      const response = await axios.post("http://localhost:5000/registro", {
+      const response = await axios.post('http://localhost:5000/registro', {
         nombre,
         apellido,
         correo,
-        contrasena,
-      });
+        contrasena
+      })
 
       if (response.status === 200) {
-        setError("");
+        setError('')
         // Registro exitoso, redireccionar o mostrar mensaje de éxito
-        window.location.href = "../login";
+        window.location.href = '../login'
       } else {
-        setError(response.data.mensaje || "Error desconocido");
+        setError(response.data.mensaje || 'Error desconocido')
       }
     } catch (error) {
-      console.error("Error al procesar la solicitud:", error);
-      setError("Error al procesar la solicitud");
+      console.error('Error al procesar la solicitud:', error)
+      setError('Error al procesar la solicitud')
     }
-  };
+  }
 
   const handleNombreChange = (event) => {
-    setNombre(event.target.value);
-  };
+    setNombre(event.target.value)
+  }
 
   const handleApellidoChange = (event) => {
-    setApellido(event.target.value);
-  };
+    setApellido(event.target.value)
+  }
 
   const handleIniciarSesion = (event) => {
-    window.location.href = '/login';
-  };
+    window.location.href = '/login'
+  }
 
   return (
     <>
@@ -235,7 +232,7 @@ const Registro = () => {
         </div>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Registro;
+export default Registro

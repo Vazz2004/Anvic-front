@@ -1,10 +1,8 @@
 'use client'
-import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
-import { FaHome, FaBoxOpen, FaChartLine, FaSignOutAlt, FaUser } from 'react-icons/fa'; // Import icons
+import Link from 'next/link'
+import { FaHome, FaBoxOpen, FaChartLine, FaSignOutAlt, FaUser } from 'react-icons/fa' // Import icons
 
 const Sidebar = () => {
-
   return (
     <nav className="bg-gradient-to-r from-orange-400 to-orange-600 text-white w-64 min-h-screen p-4 fixed">
       <div className="flex items-center justify-center mb-8">
@@ -48,7 +46,7 @@ const Sidebar = () => {
         </li>
       </ul>
     </nav>
-  );
-};
+  )
+}
 
-export default Sidebar;
+export default Sidebar

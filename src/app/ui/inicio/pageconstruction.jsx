@@ -1,8 +1,5 @@
-import { CloudArrowUpIcon, LockClosedIcon, ServerIcon } from '@heroicons/react/20/solid'
-import { MdOutlineSmartphone } from "react-icons/md";
-import { FaTools, FaScrewdriver } from "react-icons/fa";
-export default function Example() {
-    return (
+export default function Example () {
+  return (
         <div className="relative isolate overflow-hidden bg-white px-6 py-24 sm:py-32 lg:overflow-visible lg:px-0">
             <div className="absolute inset-0 -z-10 overflow-hidden">
                 <svg
@@ -47,8 +44,8 @@ export default function Example() {
                         alt=""
                     />
                 </div>
-                
+
             </div>
         </div>
-    )
+  )
 }

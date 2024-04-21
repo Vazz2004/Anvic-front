@@ -1,60 +1,55 @@
 'use client'
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import Modal from 'react-modal'
 
 const Login = () => {
-    const [correo, setCorreo] = useState("");
-    const [contrasena, setContrasena] = useState("");
-    const [error, setError] = useState(false);
-    const [userAuth, setUserAuth] = useState(false);
-    const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [correo, setCorreo] = useState('')
+  const [contrasena, setContrasena] = useState('')
+  const [modalIsOpen, setModalIsOpen] = useState(false)
 
-    const handleCorreoChange = (event) => {
-        setCorreo(event.target.value);
-    };
+  const handleCorreoChange = (event) => {
+    setCorreo(event.target.value)
+  }
 
-    const handleContrasenaChange = (event) => {
-        setContrasena(event.target.value);
-    };
+  const handleContrasenaChange = (event) => {
+    setContrasena(event.target.value)
+  }
 
+  const handleResgister = (e) => {
+    e.preventDefault()
+  }
+  const authSesion = (e) => {
+    e.preventDefault()
 
-    const handleResgister = (event) => {
-        e.preventDefault()
+    axios.post('http://localhost:5000/login', {
+      userCorreo: correo,
+      userPassword: contrasena
+    }).then((response) => {
+      if (response.data.user) {
+        console.log('INICIO SESION CORRECTO')
+      }
+    }).catch(() => {
+      setModalIsOpen(true)
+    })
+  }
+
+  const [setToken] = useState('')
+
+  useEffect(() => {
+    // Función para obtener el token del localStorage
+    const getTokenFromLocalStorage = () => {
+      const storedToken = localStorage.getItem('myToken')
+      if (storedToken) {
+        setToken(storedToken)
+        console.log('si')
+      }
     }
-    const authSesion = (e) => {
-        e.preventDefault();
 
-        axios.post('http://localhost:5000/login', {
-            userCorreo: correo,
-            userPassword: contrasena,
-        }).then((response) => {
-            if (response.data.user) {
-                console.log('INICIO SESION CORRECTO')
-            }
-        }).catch((error) => {
-            setModalIsOpen(true);
-        });
-    };
+    getTokenFromLocalStorage()
+  }, [])
 
-    const [token, setToken] = useState('');
-
-    useEffect(() => {
-        // Función para obtener el token del localStorage
-        const getTokenFromLocalStorage = () => {
-            const storedToken = localStorage.getItem('myToken');
-            if (storedToken) {
-                setToken(storedToken);
-                console.log('si')
-            }
-        };
-
-        getTokenFromLocalStorage();
-
-    }, []);
-
-
-    return (
+  return (
         <>
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
                 <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -142,7 +137,6 @@ const Login = () => {
                                 Registrarse
                             </button>
 
-
                         </div>
                     </form>
                 </div>
@@ -152,9 +146,9 @@ const Login = () => {
                 isOpen={modalIsOpen}
                 onRequestClose={() => setModalIsOpen(false)}
                 style={{
-                    overlay: {
-                        zIndex: 1000,
-                    },
+                  overlay: {
+                    zIndex: 1000
+                  }
                 }}
             >
 
@@ -162,7 +156,7 @@ const Login = () => {
             </Modal>
 
         </>
-    );
-};
+  )
+}
 
-export default Login;
+export default Login

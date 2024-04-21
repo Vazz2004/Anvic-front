@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Card = ({ title, content, icon, color }) => {
   return (
@@ -9,7 +9,7 @@ const Card = ({ title, content, icon, color }) => {
       </div>
       <p className="text-gray-600">{content}</p>
     </div>
-  );
-};
+  )
+}
 
-export default Card;
+export default Card

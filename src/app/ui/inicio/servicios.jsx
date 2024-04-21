@@ -1,31 +1,31 @@
-import React from 'react';
+import React from 'react'
 
 const Servicios = () => {
-    const serviciosData = [
-        {
-            icon: '/images/servis/1.png',
-            title: 'Accesorios para celulares, tablets y computadoras',
-            description:
+  const serviciosData = [
+    {
+      icon: '/images/servis/1.png',
+      title: 'Accesorios para celulares, tablets y computadoras',
+      description:
                 'En Anvic encontrarás una amplia variedad de accesorios para proteger y mejorar tu tecnología. Contamos con fundas, estuches, protectores de pantalla, cargadores, cables, auriculares, parlantes, teclados, mouse, y más.',
-            link: '#',
-        },
-        {
-            icon: '/images/servis/2.png',
-            title: 'Repuestos de alta calidad',
-            description:
+      link: '#'
+    },
+    {
+      icon: '/images/servis/2.png',
+      title: 'Repuestos de alta calidad',
+      description:
                 'Si necesitas reparar tu celular, tablet o computadora, en Anvic tenemos los repuestos que necesitas. Contamos con pantallas, partes traseras, visores de cámara, baterías, componentes internos, y tarjetas de memoria.',
-            link: '#',
-        },
-        {
-            icon: '/images/servis/3.png',
-            title: 'Asesoramiento técnico personalizado',
-            description:
+      link: '#'
+    },
+    {
+      icon: '/images/servis/3.png',
+      title: 'Asesoramiento técnico personalizado',
+      description:
                 'Nuestro equipo de expertos está listo para ayudarte a encontrar la solución perfecta para tus necesidades tecnológicas. Te asesoramos en la selección de productos, la reparación de equipos, y la resolución de problemas.',
-            link: '#',
-        },
-    ];
+      link: '#'
+    }
+  ]
 
-    return (
+  return (
         <section className="bg-gradient-to-br from-gray-100 via-white to-gray-100 shadow-lg rounded-lg p-8">
             <h2 className="text-4xl font-semibold mb-8 text-center">Nuestros servicios</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -53,7 +53,7 @@ const Servicios = () => {
                 ))}
             </div>
         </section>
-    );
-};
+  )
+}
 
-export default Servicios;
+export default Servicios

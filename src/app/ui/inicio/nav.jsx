@@ -1,178 +1,153 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import { LuCable, LuListMusic } from "react-icons/lu";
-import { GiEnergise } from "react-icons/gi";
-import { FaUserCircle, FaTools, FaTabletAlt, FaRegClock } from "react-icons/fa";
-import { MdComputer, MdSmartphone } from "react-icons/md";
-import { FaCartShopping } from "react-icons/fa6";
-import { BiSolidOffer } from "react-icons/bi";
-import { CgToolbox } from "react-icons/cg";
-import { Fragment } from 'react'
-import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react'
-import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import React, { useEffect, useState, Fragment } from 'react'
+import { LuCable, LuShoppingCart } from 'react-icons/lu'
+import { GiEnergise } from 'react-icons/gi'
+import { FaUserCircle, FaTools, FaTabletAlt, FaRegClock } from 'react-icons/fa'
+import { MdComputer, MdSmartphone } from 'react-icons/md'
+import { BiSolidOffer } from 'react-icons/bi'
+import { CgToolbox } from 'react-icons/cg'
+import { Dialog, Disclosure, Menu, Transition, Popover } from '@headlessui/react'
+import {
+  Bars3Icon, XMarkIcon,
+  SquaresPlusIcon
+} from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Popover } from '@headlessui/react'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
-import { LuShoppingCart } from "react-icons/lu";
-import {
-    ArrowPathIcon,
-    ChartPieIcon,
-    CursorArrowRaysIcon,
-    FingerPrintIcon,
-    SquaresPlusIcon,
-} from '@heroicons/react/24/outline'
 
 const solutions = [
-    { name: 'Analytics', description: 'Cables', href: '#', icon: LuCable },
-    { name: 'Engagement', description: 'Adaptadores', href: '#', icon: GiEnergise },
-    { name: 'Security', description: "Ofertas", href: '#', icon: BiSolidOffer },
-    { name: 'Integrations', description: 'Accesorios para audífonos', href: '#', icon: SquaresPlusIcon },
-    { name: 'Automations', description: 'repuestos', href: '#', icon: CgToolbox },
-    { name: 'Automations', description: 'Accesorio para portátil', href: '#', icon: MdComputer },
-    { name: 'Automations', description: 'Accesorios Celular', href: '#', icon: MdSmartphone },
-    { name: 'Automations', description: 'Herramientas servicio técnico', href: '#', icon: CgToolbox },
-    { name: 'Automations', description: 'Servicio técnico', href: '#', icon: FaTools },
-    { name: 'Automations', description: 'Accesorios tablet', href: '#', icon: FaTabletAlt },
-    { name: 'Automations', description: 'Accesorios Smartwatch', href: '#', icon: FaRegClock },
-]
-const callsToAction2 = [
-    { name: 'Contactados', href: '#', icon: PhoneIcon },
+  { name: 'Analytics', description: 'Cables', href: '#', icon: LuCable },
+  { name: 'Engagement', description: 'Adaptadores', href: '#', icon: GiEnergise },
+  { name: 'Security', description: 'Ofertas', href: '#', icon: BiSolidOffer },
+  { name: 'Integrations', description: 'Accesorios para audífonos', href: '#', icon: SquaresPlusIcon },
+  { name: 'Automations', description: 'repuestos', href: '#', icon: CgToolbox },
+  { name: 'Automations', description: 'Accesorio para portátil', href: '#', icon: MdComputer },
+  { name: 'Automations', description: 'Accesorios Celular', href: '#', icon: MdSmartphone },
+  { name: 'Automations', description: 'Herramientas servicio técnico', href: '#', icon: CgToolbox },
+  { name: 'Automations', description: 'Servicio técnico', href: '#', icon: FaTools },
+  { name: 'Automations', description: 'Accesorios tablet', href: '#', icon: FaTabletAlt },
+  { name: 'Automations', description: 'Accesorios Smartwatch', href: '#', icon: FaRegClock }
 ]
 
-
-
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+function classNames (...classes) {
+  return classes.filter(Boolean).join(' ')
 }
 
-
-
-
 const callsToAction = [
-    { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-    { name: 'Contact sales', href: '#', icon: PhoneIcon },
+  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
+  { name: 'Contact sales', href: '#', icon: PhoneIcon }
 ]
 
+export default function Example () {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  useEffect(() => {
+    const buscadorDiv = document.getElementById('buscar')
+    const coords = { x: 0, y: 0 }
+    const circles = buscadorDiv.querySelectorAll('.circle')
+    const colors = [
+      '#ffb56b',
+      '#fdaf69',
+      '#f89d63',
+      '#f59761',
+      '#ef865e',
+      '#ec805d',
+      '#e36e5c',
+      '#df685c',
+      '#d5585c',
+      '#d1525c',
+      '#c5415d',
+      '#c03b5d',
+      '#b22c5e',
+      '#ac265e',
+      '#9c155f',
+      '#950f5f',
+      '#830060',
+      '#7c0060',
+      '#680060',
+      '#60005f',
+      '#48005f',
+      '#3d005e'
+    ]
 
-export default function Example() {
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-    useEffect(() => {
-        const buscadorDiv = document.getElementById('buscar')
-        const coords = { x: 0, y: 0 }
-        const circles = buscadorDiv.querySelectorAll('.circle')
-        const colors = [
-            '#ffb56b',
-            '#fdaf69',
-            '#f89d63',
-            '#f59761',
-            '#ef865e',
-            '#ec805d',
-            '#e36e5c',
-            '#df685c',
-            '#d5585c',
-            '#d1525c',
-            '#c5415d',
-            '#c03b5d',
-            '#b22c5e',
-            '#ac265e',
-            '#9c155f',
-            '#950f5f',
-            '#830060',
-            '#7c0060',
-            '#680060',
-            '#60005f',
-            '#48005f',
-            '#3d005e'
-        ]
+    circles.forEach(function (circle, index) {
+      circle.x = 0
+      circle.y = 0
+      circle.style.backgroundColor = colors[index % colors.length]
+      circle.style.display = 'none' // Ocultar los elementos circle inicialmente
+    })
 
+    buscadorDiv.addEventListener('mouseenter', function () {
+      // Mostrar los círculos cuando el cursor entre en el div
+      circles.forEach(circle => {
+        circle.style.display = 'block'
+      })
+      animateCircles()
+    })
 
+    buscadorDiv.addEventListener('mouseleave', function () {
+      // Ocultar los círculos cuando el cursor salga del div
+      circles.forEach(circle => {
+        circle.style.display = 'none'
+      })
+      cancelAnimationFrame(animationFrameId)
+    })
 
-        circles.forEach(function (circle, index) {
-            circle.x = 0
-            circle.y = 0
-            circle.style.backgroundColor = colors[index % colors.length]
-            circle.style.display = 'none' // Ocultar los elementos circle inicialmente
-        })
+    window.addEventListener('mousemove', function (e) {
+      coords.x = e.clientX
+      coords.y = e.clientY
+    })
 
-        buscadorDiv.addEventListener('mouseenter', function () {
-            // Mostrar los círculos cuando el cursor entre en el div
-            circles.forEach(circle => {
-                circle.style.display = 'block'
-            })
-            animateCircles()
-        })
+    let animationFrameId
 
-        buscadorDiv.addEventListener('mouseleave', function () {
-            // Ocultar los círculos cuando el cursor salga del div
-            circles.forEach(circle => {
-                circle.style.display = 'none'
-            })
-            cancelAnimationFrame(animationFrameId)
-        })
+    function animateCircles () {
+      animationFrameId = requestAnimationFrame(function () {
+        if (isMouseInsideDiv()) {
+          let x = coords.x
+          let y = coords.y
 
-        window.addEventListener('mousemove', function (e) {
-            coords.x = e.clientX
-            coords.y = e.clientY
-        })
+          circles.forEach(function (circle, index) {
+            circle.style.left = x - 12 + 'px'
+            circle.style.top = y - 12 + 'px'
 
-        let animationFrameId
+            circle.style.transform = `scale(${(circles.length - index) / circles.length}`
 
-        function animateCircles() {
-            animationFrameId = requestAnimationFrame(function () {
-                if (isMouseInsideDiv()) {
-                    let x = coords.x
-                    let y = coords.y
+            circle.x = x
+            circle.y = y
 
-                    circles.forEach(function (circle, index) {
-                        circle.style.left = x - 12 + 'px'
-                        circle.style.top = y - 12 + 'px'
-
-                        circle.style.transform = `scale(${(circles.length - index) / circles.length}`
-
-                        circle.x = x
-                        circle.y = y
-
-                        const nextCircle = circles[index + 1] || circles[0]
-                        x += (nextCircle.x - x) * 0.6
-                        y += (nextCircle.y - y) * 0.6
-                    })
-                }
-
-                animateCircles() // Llamar a la función de animación nuevamente
-            })
+            const nextCircle = circles[index + 1] || circles[0]
+            x += (nextCircle.x - x) * 0.6
+            y += (nextCircle.y - y) * 0.6
+          })
         }
 
-        function isMouseInsideDiv() {
-            const buscadorRect = buscadorDiv.getBoundingClientRect()
-            return (
-                coords.x >= buscadorRect.left &&
+        animateCircles() // Llamar a la función de animación nuevamente
+      })
+    }
+
+    function isMouseInsideDiv () {
+      const buscadorRect = buscadorDiv.getBoundingClientRect()
+      return (
+        coords.x >= buscadorRect.left &&
                 coords.x <= buscadorRect.right &&
                 coords.y >= buscadorRect.top &&
                 coords.y <= buscadorRect.bottom
-            )
-        }
+      )
+    }
 
-        return () => {
-            // Cleanup
-            window.removeEventListener('mousemove', function (e) {
-                coords.x = e.clientX
-                coords.y = e.clientY
-            })
-            cancelAnimationFrame(animationFrameId)
-        }
-    }, []) // Run once on component mount
+    return () => {
+      // Cleanup
+      window.removeEventListener('mousemove', function (e) {
+        coords.x = e.clientX
+        coords.y = e.clientY
+      })
+      cancelAnimationFrame(animationFrameId)
+    }
+  }, []) // Run once on component mount
 
-
-
-
-
-    return (
+  return (
         <Disclosure as="nav" className="bg-orange-500">
             {({ open }) => (
                 <>
-
 
                     <div className='todoBuscador'>
                         <div className='buscar' id='buscar' placeholder=' Buscar...'>
@@ -244,7 +219,6 @@ export default function Example() {
                                             <input className='h-10 w-full rounded rounded2 rounded-slate-50 bg-slate-50 ' placeholder='Buscar productos,accesorios ...' type="text" />
                                         </div>
 
-
                                         <Menu as="div" className="movil  relative ml-3">
                                             <div>
                                                 <Menu.Button className="relative bg-black text-white flex rounded-full text-4xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -292,14 +266,11 @@ export default function Example() {
                                             </div>
                                         </div>
 
-
-
                                     </div>
                                     <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                                     </div>
                                 </div>
                             </div>
-
 
                             <header className="bg-orange-500">
                                 <nav className="mx-auto flex max-w-7xl items-center justify-center p-6 lg:px-8" aria-label="Global">
@@ -455,7 +426,5 @@ export default function Example() {
             }
         </Disclosure >
 
-
-
-    )
+  )
 }

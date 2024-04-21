@@ -5,14 +5,12 @@
  * @see https://v0.dev/t/cTocnGFSAv2
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
-import Link from "next/link"
-import { Input } from "../../../components/ui/input"
-import { Button } from "../../../components/ui/button"
-import { CardTitle, CardHeader, CardContent, Card } from "../../../components/ui/card"
-import { ResponsiveBar } from "@nivo/bar"
-import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from "../../../components/ui/table"
+import { Button } from '../../../components/ui/button'
+import { CardTitle, CardHeader, CardContent, Card } from '../../../components/ui/card'
+import { ResponsiveBar } from '@nivo/bar'
+import { TableHead, TableRow, TableHeader, TableCell, TableBody, Table } from '../../../components/ui/table'
 
-export default function Component() {
+export default function Component () {
   return (
     <div className="flex flex-col w-full min-h-screen">
 
@@ -114,8 +112,8 @@ export default function Component() {
                       height="40"
                       src="http://localhost:3001/prueba.png"
                       style={{
-                        aspectRatio: "40/40",
-                        objectFit: "cover",
+                        aspectRatio: '40/40',
+                        objectFit: 'cover'
                       }}
                       width="40"
                     />
@@ -134,49 +132,49 @@ export default function Component() {
   )
 }
 
-function BarChart(props) {
+function BarChart (props) {
   return (
     <div {...props}>
       <ResponsiveBar
         data={[
-          { name: "Jan", count: 111 },
-          { name: "Feb", count: 157 },
-          { name: "Mar", count: 129 },
-          { name: "Apr", count: 150 },
-          { name: "May", count: 119 },
-          { name: "Jun", count: 72 },
+          { name: 'Jan', count: 111 },
+          { name: 'Feb', count: 157 },
+          { name: 'Mar', count: 129 },
+          { name: 'Apr', count: 150 },
+          { name: 'May', count: 119 },
+          { name: 'Jun', count: 72 }
         ]}
-        keys={["count"]}
+        keys={['count']}
         indexBy="name"
         margin={{ top: 0, right: 0, bottom: 40, left: 40 }}
         padding={0.3}
-        colors={["#ffb703"]}
+        colors={['#ffb703']}
         axisBottom={{
           tickSize: 0,
-          tickPadding: 16,
+          tickPadding: 16
         }}
         axisLeft={{
           tickSize: 0,
           tickValues: 4,
-          tickPadding: 16,
+          tickPadding: 16
         }}
         gridYValues={4}
         theme={{
           tooltip: {
             chip: {
-              borderRadius: "9999px",
+              borderRadius: '9999px'
             },
             container: {
-              fontSize: "12px",
-              textTransform: "capitalize",
-              borderRadius: "6px",
-            },
+              fontSize: '12px',
+              textTransform: 'capitalize',
+              borderRadius: '6px'
+            }
           },
           grid: {
             line: {
-              stroke: "#fb8500",
-            },
-          },
+              stroke: '#fb8500'
+            }
+          }
         }}
         tooltipLabel={({ id }) => `${id}`}
         enableLabel={false}
@@ -187,8 +185,7 @@ function BarChart(props) {
   )
 }
 
-
-function CreditCardIcon(props) {
+function CreditCardIcon (props) {
   return (
     <svg
       {...props}
@@ -208,8 +205,7 @@ function CreditCardIcon(props) {
   )
 }
 
-
-function DollarSignIcon(props) {
+function DollarSignIcon (props) {
   return (
     <svg
       {...props}
@@ -229,30 +225,7 @@ function DollarSignIcon(props) {
   )
 }
 
-
-function Package2Icon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M3 9h18v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9Z" />
-      <path d="m3 9 2.45-4.9A2 2 0 0 1 7.24 3h9.52a2 2 0 0 1 1.8 1.1L21 9" />
-      <path d="M12 3v6" />
-    </svg>
-  )
-}
-
-
-function RefreshCwIcon(props) {
+function RefreshCwIcon (props) {
   return (
     <svg
       {...props}
@@ -274,29 +247,7 @@ function RefreshCwIcon(props) {
   )
 }
 
-
-function SearchIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.3-4.3" />
-    </svg>
-  )
-}
-
-
-function StarIcon(props) {
+function StarIcon (props) {
   return (
     <svg
       {...props}
@@ -315,8 +266,7 @@ function StarIcon(props) {
   )
 }
 
-
-function UsersIcon(props) {
+function UsersIcon (props) {
   return (
     <svg
       {...props}

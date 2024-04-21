@@ -1,13 +1,13 @@
 'use client'
-import Nav from '../../ui/perfil/nav';
+import Nav from '../../ui/perfil/nav'
 
-export default function(){
-    return(
+export default function Page () {
+  return (
         <>
         <div className=' flex items-start' >
         <Nav />
         </div>
-        
+
         </>
-    )
+  )
 }

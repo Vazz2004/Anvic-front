@@ -1,7 +1,7 @@
-import Image from "next/image"
+import Image from 'next/image'
 
-export default function baner() {
-    return (
+export default function baner () {
+  return (
         <>
             <div className="w-full flex justify-center ">
                 <Image
@@ -15,5 +15,5 @@ export default function baner() {
 
         </>
 
-    );
+  )
 }

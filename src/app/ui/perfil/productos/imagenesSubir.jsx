@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-function UploadedImage({ image, onDelete }) {
+function UploadedImage ({ image, onDelete }) {
   return (
     <div className="relative">
       <img className="w-10 h-10 mr-2 mb-2 rounded-lg" src={image} alt="" />
@@ -11,7 +11,7 @@ function UploadedImage({ image, onDelete }) {
         X
       </button>
     </div>
-  );
+  )
 }
 
-export default UploadedImage;
+export default UploadedImage

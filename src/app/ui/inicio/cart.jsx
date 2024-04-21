@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
+import React, { useState } from 'react'
+import Modal from 'react-modal'
 
 const ProductCard = (props) => {
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [selectedColor, setSelectedColor] = useState('negro');
-  const [selectedQuantity, setSelectedQuantity] = useState(1);
-  
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [selectedColor, setSelectedColor] = useState('negro')
+  const [selectedQuantity, setSelectedQuantity] = useState(1)
+
   const handleCard = () => {
-    setModalIsOpen(!modalIsOpen);
-  };
+    setModalIsOpen(!modalIsOpen)
+  }
 
   const handleCompra = (producto) => {
     const compra = {
       img: props.image,
       descrip: props.descrip,
       prom: props.prom,
-      precio: props.precio,
-    };
-    console.log(compra);
-    handleCard(); // Abre el modal al hacer clic en "Comprar"
-  };
+      precio: props.precio
+    }
+    console.log(compra)
+    handleCard() // Abre el modal al hacer clic en "Comprar"
+  }
 
   return (
     <>
@@ -45,16 +45,13 @@ const ProductCard = (props) => {
         </div>
       </div>
 
-
-
-
 <Modal
   isOpen={modalIsOpen}
   onRequestClose={() => setModalIsOpen(false)}
   style={{
     overlay: {
-      zIndex: 1000,
-    },
+      zIndex: 1000
+    }
   }}
   className="fixed inset-0 flex items-center justify-center w-full"
 >
@@ -68,7 +65,7 @@ const ProductCard = (props) => {
       <p className="text-gray-700 mb-2">Descripción: {props.descrip}</p>
       <p className="text-green-500 mb-2">Promoción: {props.prom}</p>
       <p className="text-blue-500 mb-4">Precio: {props.precio}</p>
-      
+
       {/* Selector de color */}
       <div className="mb-4">
         <label htmlFor="color" className="text-gray-700 block mb-2">
@@ -121,7 +118,7 @@ const ProductCard = (props) => {
 </Modal>
 
     </>
-  );
-};
+  )
+}
 
-export default ProductCard;
+export default ProductCard

@@ -1,7 +1,7 @@
 import ButtonGroup from '@mui/material/ButtonGroup'
 import Box from '@mui/material/Box'
 
-export default function Botonera(props) {
+export default function Botonera (props) {
   const { agregar, editar, eliminar, ver, title } = props
   return (
     <Box

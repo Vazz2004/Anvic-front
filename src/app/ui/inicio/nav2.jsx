@@ -1,46 +1,35 @@
 'use client'
 import Link from 'next/link'
 import { Fragment, useState } from 'react'
-import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
+import { Dialog, Disclosure, Popover } from '@headlessui/react'
 import {
-    ArrowPathIcon,
-    Bars3Icon,
-    ChartPieIcon,
-    CursorArrowRaysIcon,
-    FingerPrintIcon,
-    SquaresPlusIcon,
-    XMarkIcon,
+  Bars3Icon,
+  XMarkIcon
 } from '@heroicons/react/24/outline'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 const solutions = [
-    { name: 'Analytics', description: 'Cables', href: '#', },
-    { name: 'Engagement', description: 'Adaptadores', href: '#', },
-    { name: 'Security', description: "Ofertas", href: '#', },
-    { name: 'Integrations', description: 'Accesorios para audífonos', href: '#', },
-    { name: 'Automations', description: 'repuestos', href: '#', },
-    { name: 'Automations', description: 'Accesorio para portátil', href: '#', },
-    { name: 'Automations', description: 'Accesorios Celular', href: '#', },
-    { name: 'Automations', description: 'Herramientas servicio técnico', href: '#', },
-    { name: 'Automations', description: 'Servicio técnico', href: '#', },
-    { name: 'Automations', description: 'Accesorios tablet', href: '#', },
-    { name: 'Automations', description: 'Accesorios Smartwatch', href: '#', },
+  { name: 'Analytics', description: 'Cables', href: '#' },
+  { name: 'Engagement', description: 'Adaptadores', href: '#' },
+  { name: 'Security', description: 'Ofertas', href: '#' },
+  { name: 'Integrations', description: 'Accesorios para audífonos', href: '#' },
+  { name: 'Automations', description: 'repuestos', href: '#' },
+  { name: 'Automations', description: 'Accesorio para portátil', href: '#' },
+  { name: 'Automations', description: 'Accesorios Celular', href: '#' },
+  { name: 'Automations', description: 'Herramientas servicio técnico', href: '#' },
+  { name: 'Automations', description: 'Servicio técnico', href: '#' },
+  { name: 'Automations', description: 'Accesorios tablet', href: '#' },
+  { name: 'Automations', description: 'Accesorios Smartwatch', href: '#' }
 ]
 
-
-const callsToAction = [
-    { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-    { name: 'Contact sales', href: '#', icon: PhoneIcon },
-]
-
-function classNames(...classes) {
-    return classes.filter(Boolean).join(' ')
+function classNames (...classes) {
+  return classes.filter(Boolean).join(' ')
 }
 
-export default function Example() {
-    const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+export default function Example () {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-    return (
+  return (
         <header className="bg-orange-500">
             <nav className="mx-auto flex max-w-7xl items-center justify-center p-6 lg:px-8" aria-label="Global">
                 <div className="flex lg:hidden">
@@ -170,5 +159,5 @@ export default function Example() {
                 </Dialog.Panel>
             </Dialog>
         </header>
-    )
+  )
 }
