@@ -1,3 +1,5 @@
+'use client'
+import React, { useEffect, useState } from 'react'
 import Nav from './ui/inicio/nav'
 import Carrusel from './ui/inicio/carrusel'
 import Prueba from './ui/inicio/comprueba'
@@ -7,11 +9,26 @@ import Socios from './ui/inicio/asociados'
 import Footer from './ui/inicio/footer'
 import Baner from './ui/inicio/baner'
 import Iconwha from './ui/inicio/iconWhatsapp'
-
+import Loader from './ui/pantallaDeCarga/load.jsx'
 export default function page () {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Aquí simulamos una llamada a una API o una solicitud asíncrona
+    // Puedes reemplazar esto con tu propio código de carga de contenido
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 2000) // 3 segundos de simulación de carga
+  }, [])
   return (
     <>
-        <Iconwha />
+    {isLoading ? (
+          <div className="flex justify-center items-center w-screen h-screen">
+            <Loader />
+          </div>
+    ) : (
+          <div>
+            <Iconwha />
     <Nav />
     <Carrusel />
     <h2 className="text-center mt-10 font-bold tracking-tight text-black sm:text-4xl">
@@ -33,7 +50,8 @@ export default function page () {
     <Estadisticas />
     <Socios />
     <Footer />
-
+          </div>
+    )}
     </>
 
   )

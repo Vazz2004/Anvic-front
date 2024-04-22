@@ -16,6 +16,7 @@ const App = () => {
     async function fetchData () {
       try {
         const response = await api.get('producto/categorias')
+        console.log('Categorias:', response.data)
         setCategorias(response.data)
       } catch (error) {
         console.log('Error al obtener las categorías:', error)

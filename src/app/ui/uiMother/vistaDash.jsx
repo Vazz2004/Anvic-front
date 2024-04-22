@@ -1,6 +1,6 @@
 export default function VistaDash ({ titulo, descripPage, content, boton }) {
   return (
-        <section className="w-full mx-40">
+        <section className="w-full mx-20">
             <div className="container mx-auto w-9/12 ">
                 <div className="flex flex-col md:flex-row items-center w-full justify-between gap-5 md:gap-8 px-4 md:px-6 max-w-6xl mx-auto">
                     <div className="grid gap-1">

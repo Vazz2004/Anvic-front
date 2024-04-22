@@ -32,10 +32,10 @@ const FormProducto = (props) => {
   const [color, setColor] = useState([])
   const [caract, setCaract] = useState([])
   const [file, setFile] = useState(null)
-  const [setImage] = useState({
+  const [, setImage] = useState({
     url: ''
   })
-  const [setSelectedColor] = useState('')
+  const [, setSelectedColor] = useState('')
   const [tipoProducto, setTipoProducto] = useState([])
   const [errorCaract, setErrorCaract] = useState(false)
   const [errorCampos, setErrorCampos] = useState(false)
@@ -76,7 +76,7 @@ const FormProducto = (props) => {
         const response = await api.get('producto/colores')
         setColor(response.data)
       } catch (error) {
-        console.log('Error al obtener las categorías')
+        console.log('Error al obtener los colores')
       }
     }
     fetchData()
@@ -168,23 +168,20 @@ const FormProducto = (props) => {
         const response = await api.post('producto/create-img', {
           url: result
         })
-        if (response) {
-          async function fetchData () {
-            try {
-              const response = await api.get('producto/ver-img')
-              const urls = response.data
-                .flat() // Aplanar el array para eliminar arrays anidados
-                .filter(url => url !== null) // Filtrar las URL que no son nulas
-                .map(item => item.url_imagen) // Mapear los objetos a sus URLs de imagen
-              console.log('URLs de imagen:', urls)
-              setImagenesProducto(urls) // Ahora setImagenesProducto recibe un array de URLs
-            } catch (error) {
-              console.error(error)
-            }
+        async function fetchData () {
+          try {
+            const response = await api.get('producto/ver-img')
+            const urls = response.data
+              .flat() // Aplanar el array para eliminar arrays anidados
+              .filter(url => url !== null) // Filtrar las URL que no son nulas
+              .map(item => item.url_imagen) // Mapear los objetos a sus URLs de imagen
+            console.log('URLs de imagen:', urls)
+            setImagenesProducto(urls) // Ahora setImagenesProducto recibe un array de URLs
+          } catch (error) {
+            console.error(error)
           }
-
-          fetchData()
-        }
+        } fetchData()
+        return response
       }
     } catch (error) {
       console.log('Error:', error)
@@ -336,8 +333,7 @@ const FormProducto = (props) => {
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={12}>
-                                    {validarId
-                                      ? (
+                                    {validarId ? (
                                         <Input
                                             id='idCategoria'
                                             fullWidth
@@ -348,8 +344,7 @@ const FormProducto = (props) => {
                                             disabled={validarId}
                                             required
                                         />
-                                        )
-                                      : (
+                                    ) : (
                                         <Selects
                                             id='idCategoria'
                                             label='Categoria'
@@ -360,7 +355,7 @@ const FormProducto = (props) => {
                                             disabled={validarId}
                                             required
                                         />
-                                        )}
+                                    )}
                                 </Grid>
 
                                 <Grid item xs={12} sm={12}>
@@ -544,13 +539,11 @@ const FormProducto = (props) => {
                                 </Grid>
 
                                 <Grid item xs={12} sm={12}>
-                                    {imagenesProducto.length > 0
-                                      ? (
+                                    {imagenesProducto.length > 0 ? (
                                         <Galeria datos={imagenesProducto} />
-                                        )
-                                      : (
+                                    ) : (
                                         <p>No hay imágenes disponibles para este producto.</p>
-                                        )}
+                                    )}
 
                                 </Grid>
 

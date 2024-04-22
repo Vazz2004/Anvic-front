@@ -6,7 +6,6 @@ import DataTable from '../uiMother/dataTable'
 function TablaProductos ({ categoria }) {
   const { selectedId } = useSelectId()
   const [data, setData] = useState([])
-  const [setImg] = useState('')
   const [error, setError] = useState(null)
 
   useEffect(() => {
@@ -22,25 +21,6 @@ function TablaProductos ({ categoria }) {
     }
     fetchData()
   }, [])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const promises = data.map(async (product) => {
-          const res = await api.get(`producto/ver-img-producto/${product.id}`)
-          const filteredImages = res.data.flat().filter(item => item !== null)
-          console.log('url', filteredImages)
-          setImg(filteredImages)
-          return { id: product.id, img: filteredImages[0] } // Retorna un objeto con el id del producto y la primera imagen encontrada
-        })
-        await Promise.all(promises)
-      } catch (error) {
-        console.log('Error al traer las imágenes de los productos', error)
-        setError('Error al traer las imágenes de los productos')
-      }
-    }
-    fetchData()
-  }, [data])
 
   const filteredData = categoria ? data.filter(row => row.nombre_categoria === categoria) : data
 

@@ -1,23 +1,14 @@
 import { DataGrid, esES } from '@mui/x-data-grid'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 
 export default function DataTable (props) {
   const { columns, rows, selectId } = props
-  const [setLoading] = useState(true)
-
   const theme = createTheme({
     palette: {
       primary: { main: '#1976d2' }
     }
   }, esES)
-
-  // Simular una carga asíncrona
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false)
-    }, 2000)
-  }, [])
 
   return (
         <ThemeProvider theme={theme}>
