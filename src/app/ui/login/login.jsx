@@ -24,25 +24,30 @@ const Login = () => {
   const authSesion = (e) => {
     e.preventDefault()
 
-    axios.post('http://localhost:5000/login', {
-      userCorreo: correo,
-      userPassword: contrasena
-    }).then((response) => {
-      if (response.data.user) {
-        const { user } = response.data // Desestructura el objeto 'user' de la respuesta
-        setData(user)
-        const [dataU] = user.usuario // Desestructura el array 'usuario' del objeto 'user'
-        console.log('CONEXIÓN EXITOSA', dataU)
+    if (typeof window !== 'undefined') {
+      axios.post('http://localhost:5000/login', {
+        userCorreo: correo,
+        userPassword: contrasena
+      }).then((response) => {
+        if (response.data.user) {
+          const { user } = response.data // Desestructura el objeto 'user' de la respuesta
+          setData(user)
+          const [dataU] = user.usuario // Desestructura el array 'usuario' del objeto 'user'
+          console.log('CONEXIÓN EXITOSA', dataU)
 
-        localStorage.setItem('myToken', JSON.stringify(user)) // Convertir a cadena JSON antes de almacenar
-
-        window.location.href = 'perfil'
-      }
-    }).catch(() => {
-      setModalIsOpen(true)
-    })
+          localStorage.setItem('myToken', JSON.stringify(user)) // Convertir a cadena JSON antes de almacenar
+          console.log('id rol', dataU.rol_id)
+          if (dataU.rol_id === 1) {
+            window.location.href = '/perfil'
+          } else if (dataU.rol_id === 3) {
+            window.location.href = '/perfil/historial-compras-cliente'
+          }
+        }
+      }).catch(() => {
+        setModalIsOpen(true)
+      })
+    }
   }
-
   return (
         <>
             <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">

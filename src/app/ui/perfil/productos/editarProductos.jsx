@@ -8,7 +8,6 @@ import React, { useState } from 'react'
 import { api } from '../../../../api/api'
 import Alerta from '../../alertas/alert'
 import Swal from 'sweetalert2'
-
 const defaultValues = {
   tituloProducto: '',
   descripcion: '',
@@ -67,40 +66,47 @@ const FormProductoEditar = (props) => {
   const handleClose = () => {
     setOpen(false)
   }
-
   const handleModal = () => {
-    setOpen(true)
-    const idFromStorage = localStorage.getItem('id')
-    idHok = idFromStorage
-    console.log('HOCK FORM', idHok)
-    peticiones()
+    if (typeof window !== 'undefined' && window.localStorage) {
+      setOpen(true)
+      const idFromStorage = localStorage.getItem('id')
+      idHok = idFromStorage
+      console.log('HOCK FORM', idHok)
+      peticiones()
+    } else {
+      console.error("El objeto 'window' no está definido o 'localStorage' no está disponible. No es un entorno de navegador.")
+    }
   }
 
   const handleEnvioBasic = async () => {
-    try {
-      const idFromStorage = localStorage.getItem('id')
-      idHok = idFromStorage
-      const response = await api.patch(`producto/update-product-basic/${idHok}`, values)
-      if (response) {
-        const Toast = Swal.mixin({
-          toast: true,
-          position: 'top-end',
-          showConfirmButton: false,
-          timer: 3000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
-            toast.onmouseenter = Swal.stopTimer
-            toast.onmouseleave = Swal.resumeTimer
-          }
-        })
-        Toast.fire({
-          icon: 'success',
-          title: 'Signed in successfully'
-        })
-        handleClose()
+    if (typeof window !== 'undefined' && window.localStorage) {
+      try {
+        const idFromStorage = localStorage.getItem('id')
+        idHok = idFromStorage
+        const response = await api.patch(`producto/update-product-basic/${idHok}`, values)
+        if (response) {
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer
+              toast.onmouseleave = Swal.resumeTimer
+            }
+          })
+          Toast.fire({
+            icon: 'success',
+            title: 'Signed in successfully'
+          })
+          handleClose()
+        }
+      } catch (error) {
+        console.log('error')
       }
-    } catch (error) {
-      console.log('error')
+    } else {
+      console.error("El objeto 'window' no está definido o 'localStorage' no está disponible. No es un entorno de navegador.")
     }
   }
 

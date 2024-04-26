@@ -3,10 +3,9 @@ export const idUser = () => {
     const storedUser = localStorage.getItem('myToken')
     if (storedUser) {
       const user = JSON.parse(storedUser)
-      const idUsuario = user.usuario[0].id_usuario
-      return idUsuario
-    } else {
-      window.location.href = '/'
+      const idRol = user.usuario[0].rol_id
+      console.log('id rol hok', user)
+      return idRol
     }
   } else {
     console.error("El objeto 'window' no está definido o 'localStorage' no está disponible. No es un entorno de navegador.")
