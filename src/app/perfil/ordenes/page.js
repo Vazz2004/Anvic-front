@@ -21,9 +21,8 @@ export default function Page () {
             <Loader />
           </div>
         ) : (
-            <div className="flex">
-              <div className='w-2/12' > <Nav /></div>
-              <div className='w-10/12' > <HomeOrdenes /></div>
+            <div className="flex justify-center  w-screen h-screen mx-96">
+            <HomeOrdenes />
           </div>
         )}
 
