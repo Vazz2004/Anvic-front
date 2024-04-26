@@ -26,13 +26,17 @@ export default function Sidebar () {
   }
 
   return (
+    <nav className="bg-gradient-to-r from-orange-400 to-orange-600 text-white w-64 min-h-screen p-4 fixed">
+      <div className="flex flex-col items-center justify-center mb-8">
     <nav className="bg-gradient-to-r from-orange-400 to-orange-600 text-white w-2/12 min-h-screen p-4 fixed">
       <div className="flex flex-col items-center justify-center mb-8">
         <img
           src="https://i.pinimg.com/736x/28/e6/c6/28e6c686522a710e0e3a3c5e17ec5a31.jpg"
           alt="Avatar"
           className="rounded-full w-16 h-16 mb-2"
+          className="rounded-full w-16 h-16 mb-2"
         />
+        <p className="text-sm font-semibold text-center">{nameUser.nombre} {nameUser.apellido}</p>
         <p className="text-sm font-semibold text-center">{nameUser.nombre} {nameUser.apellido}</p>
       </div>
       {idROl === 1 ? (
@@ -62,6 +66,36 @@ export default function Sidebar () {
                 Clientes
               </a>
             </li>
+          </>
+        ) : (
+          DenePage()
+        )}
+
+        {idROl === 3 ? (
+          <>
+            <>
+              <li>
+                <Link href="/perfil/ordenes-cliente" className="flex items-center py-2 px-4">
+                  <FaUser className="w-6 h-6 mr-4 text-orange-200" />
+                  Pedidos
+                </Link>
+              </li>
+
+              <li>
+                <Link href="/perfil/historial-compras-cliente" className="flex items-center py-2 px-4">
+                  <FaUser className="w-6 h-6 mr-4 text-orange-200" />
+                  Historial de compra
+                </Link>
+              </li>
+            </>
+
+          </>
+        ) : (
+          DenePage()
+        )}
+        <li>
+          <BotonCerrarSesion />
+        </li>
           </ul>
         </div>
       ) : (

@@ -8,7 +8,7 @@ import { api } from '../../../../api/api'
 import useSelectId from '../../../hooks/useSelectid'
 import DataTable from '../../../ui/uiMother/dataTable'
 import Botonera from '../../uiMother/botonera'
-import { EyeSlashIcon } from '@heroicons/react/24/outline'
+import { EyeIcon } from '@heroicons/react/24/outline'
 import FormProducto from '../../../ui/perfil/productos/agregarProductos'
 function TablaProductos ({ categoria }) {
   const { selectedId } = useSelectId()
@@ -62,17 +62,17 @@ export default function Page () {
   return (
     <div className='mt-10 '>
       <h1 className="text-3xl font-bold tracking-tight">Ordenes</h1>
+      <p className="text-gray-500 dark:text-gray-400">Revisa tur ordenes pendientes</p>
       {<Botonera
           agregar={
             <FormProducto
-              icon={<EyeSlashIcon className='w-6 h-6' />}
+              icon={<EyeIcon className='w-6 h-6' />}
               bgColor='secondary'
               id={null}
               label='Agregar Producto'
             />
           }
         />}
-      <p className="text-gray-500 dark:text-gray-400">Revisa tur ordenes pendientes</p>
       {error && <p>{error}</p>}
       <DataTable columns={columns} rows={filteredData} selectId={selectedId} />
       {selectedId && <p>Selected ID: {selectedId}</p>}
