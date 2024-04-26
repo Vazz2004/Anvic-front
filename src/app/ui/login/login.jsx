@@ -18,6 +18,8 @@ const Login = () => {
 
   const handleResgister = (e) => {
     e.preventDefault()
+
+    window.location.href = '/registro'
   }
 
   const authSesion = (e) => {

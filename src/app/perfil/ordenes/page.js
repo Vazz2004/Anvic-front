@@ -24,7 +24,7 @@ export default function Page () {
             <Loader />
           </div>
         ) : (
-            <div className="flex justify-center  w-screen h-screen">
+            <div className="flex justify-center  w-screen h-screen mx-96">
             <HomeOrdenes />
           </div>
         )}
