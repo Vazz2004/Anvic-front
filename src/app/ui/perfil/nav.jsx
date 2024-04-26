@@ -1,28 +1,20 @@
 'use client'
 import Link from 'next/link'
-import { useEffect } from 'react'
-import { FaHome, FaBoxOpen, FaChartLine, FaSignOutAlt, FaUser } from 'react-icons/fa' // Import icons
-
+import { useEffect, useState } from 'react'
+import { FaHome, FaBoxOpen, FaChartLine, FaUser } from 'react-icons/fa' // Import icons
+import BotonCerrarSesion from './botonCerrarSesion'
 export default function Sidebar () {
+  const storedUser = localStorage.getItem('myToken')
+  const [nameUser, setNameUser] = useState({})
+
   useEffect(() => {
-    // Función para obtener el valor de una cookie por su nombre
-    const getCookieValue = (name) => {
-      const cookies = document.cookie.split(';')
-      for (const cookie of cookies) {
-        const [cookieName, cookieValue] = cookie.split('=')
-        if (cookieName.trim() === name) {
-          return cookieValue
-        }
-      }
-      return null
+    if (storedUser) {
+      const user = JSON.parse(storedUser)
+      setNameUser({ nombre: user.usuario[0].nombre, apellido: user.usuario[0].apellido })
+    } else {
+      window.location.href = '/'
     }
-
-    // Obtener el valor de la cookie 'myTokenName'
-    const token = getCookieValue('myTokenName')
-    console.log('Valor de la cookie:', token)
-
-    // Aquí puedes hacer lo que quieras con el valor de la cookie
-  }, []) // Asegúrate de pasar un array vacío como segundo argumento para que el efecto se ejecute solo una vez
+  }, [storedUser])
 
   return (
     <nav className="bg-gradient-to-r from-orange-400 to-orange-600 text-white w-64 min-h-screen p-4 fixed">
@@ -32,7 +24,7 @@ export default function Sidebar () {
           alt="Avatar"
           className="rounded-full w-16 h-16 mx-auto mb-4"
         />
-        <p className="text-sm font-semibold text-center">Bienvenido usuario </p>
+        <p className="text-sm font-semibold text-center"> {nameUser.nombre} {nameUser.apellido} </p>
       </div>
       <ul className="space-y-4">
         <li>
@@ -73,10 +65,7 @@ export default function Sidebar () {
           </Link>
         </li>
         <li>
-          <Link href="/" className="flex items-center py-2 px-4">
-            <FaSignOutAlt className="w-6 h-6 mr-4 text-orange-200" />
-            Cerrar sesión
-          </Link>
+          <BotonCerrarSesion />
         </li>
       </ul>
     </nav>
