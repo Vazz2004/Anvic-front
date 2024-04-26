@@ -26,13 +26,13 @@ export default function Sidebar () {
 
   return (
     <nav className="bg-gradient-to-r from-orange-400 to-orange-600 text-white w-64 min-h-screen p-4 fixed">
-      <div className="flex items-center justify-center mb-8">
+      <div className="flex flex-col items-center justify-center mb-8">
         <img
           src="https://i.pinimg.com/736x/28/e6/c6/28e6c686522a710e0e3a3c5e17ec5a31.jpg"
           alt="Avatar"
-          className="rounded-full w-16 h-16 mx-auto mb-4"
+          className="rounded-full w-16 h-16 mb-2"
         />
-        <p className="text-sm font-semibold text-center"> {nameUser.nombre} {nameUser.apellido} </p>
+        <p className="text-sm font-semibold text-center">{nameUser.nombre} {nameUser.apellido}</p>
       </div>
       <ul className="space-y-4">
         {idROl === 1 ? (
@@ -85,16 +85,15 @@ export default function Sidebar () {
                   Historial de compra
                 </Link>
               </li>
-              <li>
-                <BotonCerrarSesion />
-              </li>
             </>
 
           </>
         ) : (
           DenePage()
         )}
-
+        <li>
+          <BotonCerrarSesion />
+        </li>
       </ul>
     </nav>
   )
