@@ -228,9 +228,7 @@ const FormProducto = (props) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log('enviado')
-
-    console.log('enviado')
+    location.reload()
   }
 
   const handleFileChange = (e) => {

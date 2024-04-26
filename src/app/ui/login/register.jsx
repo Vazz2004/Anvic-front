@@ -8,7 +8,7 @@ const Registro = () => {
   const [nombre, setNombre] = useState('')
   const [apellido, setApellido] = useState('')
   const [correo, setCorreo] = useState('')
-  const [setError] = useState('')
+  const [errorRegistro, setError] = useState('')
   const [confirmacionContrasena, setConfirmacionContrasena] = useState('')
   const [errorCorreo, setErrorCorreo] = useState('')
   const [errorContrasena, setErrorContrasena] = useState('')
@@ -68,8 +68,7 @@ const Registro = () => {
         setError(response.data.mensaje || 'Error desconocido')
       }
     } catch (error) {
-      console.error('Error al procesar la solicitud:', error)
-      setError('Error al procesar la solicitud')
+      console.error('Error al procesar la solicitud:', error, errorRegistro)
     }
   }
 

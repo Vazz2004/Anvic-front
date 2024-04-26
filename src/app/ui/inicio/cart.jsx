@@ -110,7 +110,7 @@ const ProductCard = (props) => {
           onClick={() => setModalIsOpen(false)}
           className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
         >
-          Cerrar
+          X
         </button>
       </div>
     </div>

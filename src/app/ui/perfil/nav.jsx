@@ -1,8 +1,29 @@
 'use client'
 import Link from 'next/link'
+import { useEffect } from 'react'
 import { FaHome, FaBoxOpen, FaChartLine, FaSignOutAlt, FaUser } from 'react-icons/fa' // Import icons
 
-const Sidebar = () => {
+export default function Sidebar () {
+  useEffect(() => {
+    // Función para obtener el valor de una cookie por su nombre
+    const getCookieValue = (name) => {
+      const cookies = document.cookie.split(';')
+      for (const cookie of cookies) {
+        const [cookieName, cookieValue] = cookie.split('=')
+        if (cookieName.trim() === name) {
+          return cookieValue
+        }
+      }
+      return null
+    }
+
+    // Obtener el valor de la cookie 'myTokenName'
+    const token = getCookieValue('myTokenName')
+    console.log('Valor de la cookie:', token)
+
+    // Aquí puedes hacer lo que quieras con el valor de la cookie
+  }, []) // Asegúrate de pasar un array vacío como segundo argumento para que el efecto se ejecute solo una vez
+
   return (
     <nav className="bg-gradient-to-r from-orange-400 to-orange-600 text-white w-64 min-h-screen p-4 fixed">
       <div className="flex items-center justify-center mb-8">
@@ -27,15 +48,28 @@ const Sidebar = () => {
           </Link>
         </li>
         <li>
-          <Link href="/admin/ventas" className="flex items-center py-2 px-4">
+          <Link href="/perfil/ordenes" className="flex items-center py-2 px-4">
             <FaChartLine className="w-6 h-6 mr-4 text-orange-200" />
-            Ventas
+            Ordenes
           </Link>
         </li>
         <li>
           <Link href="/perfil/usuarios" className="flex items-center py-2 px-4">
             <FaUser className="w-6 h-6 mr-4 text-orange-200" />
             Clientes
+          </Link>
+        </li>
+        <li>
+          <Link href="/perfil/ordenes-cliente" className="flex items-center py-2 px-4">
+            <FaUser className="w-6 h-6 mr-4 text-orange-200" />
+            Pedidos
+          </Link>
+        </li>
+
+        <li>
+          <Link href="/perfil/historial-compras-cliente" className="flex items-center py-2 px-4">
+            <FaUser className="w-6 h-6 mr-4 text-orange-200" />
+            Historial de compra
           </Link>
         </li>
         <li>
@@ -48,5 +82,3 @@ const Sidebar = () => {
     </nav>
   )
 }
-
-export default Sidebar

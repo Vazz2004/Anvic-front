@@ -10,6 +10,7 @@ import Footer from './ui/inicio/footer'
 import Baner from './ui/inicio/baner'
 import Iconwha from './ui/inicio/iconWhatsapp'
 import Loader from './ui/pantallaDeCarga/load.jsx'
+
 export default function page () {
   const [isLoading, setIsLoading] = useState(true)
 

@@ -1,16 +1,15 @@
-'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-export default function useSelectId () {
-  // eslint-disable-next-line no-unused-vars
-  const [selectId, setSelectId] = useState(null)
-  // eslint-disable-next-line no-unused-vars
-  const [saveSelectId, setSaveSelectId] = useState(null)
+export default function useSelectId (initialId) {
+  const [selectId, setSelectId] = useState(initialId)
 
-  //  const storedSelectId = localStorage.getItem('selectId')
-  // const storedSaveSelectId = localStorage.getItem('saveSelectId')
-  // setSelectId(storedSelectId)
-  // setSaveSelectId(storedSaveSelectId)
+  useEffect(() => {
+    if (selectId !== undefined) {
+      localStorage.setItem('id', selectId)
+      const idLocalStorage = localStorage.getItem('id')
+      console.log('id hook', idLocalStorage)
+    }
+  }, [selectId])
 
-  return { selectId, saveSelectId }
+  return { selectId, setSelectId }
 }

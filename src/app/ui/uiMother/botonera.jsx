@@ -4,6 +4,7 @@ import Box from '@mui/material/Box'
 export default function Botonera (props) {
   const { agregar, editar, eliminar, ver, title } = props
   return (
+    <>
     <Box
       sx={{
         display: 'flex',
@@ -21,5 +22,6 @@ export default function Botonera (props) {
         {ver}
       </ButtonGroup>
     </Box>
+    </>
   )
 }
