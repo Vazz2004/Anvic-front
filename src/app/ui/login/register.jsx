@@ -1,14 +1,16 @@
 'use client'
 import React, { useState } from 'react'
 import Alerta from '../alertas/alert'
-import { api } from '../../../api/api'
+import { api } from '../../../api/api.js'
 const Registro = () => {
   const [contrasena, setContrasena] = useState('')
   const [nombre, setNombre] = useState('')
   const [apellido, setApellido] = useState('')
   const [correo, setCorreo] = useState('')
   const [errorRegistro, setErrorRegistro] = useState('')
+  const [userExits, setUserExits] = useState(false)
   const [confirmacionContrasena, setConfirmacionContrasena] = useState('')
+  const [errorCorreo, setErrorCorreo] = useState(false)
   const [errorCorreo, setErrorCorreo] = useState(false)
   const [errorContrasena, setErrorContrasena] = useState('')
 
@@ -52,20 +54,26 @@ const Registro = () => {
     }
 
     try {
-      const response = await api.post('registro', {
+      const response = await api.post('/registro', {
         nombre,
         apellido,
         correo,
         contrasena
       })
-      if (response.status === 200) {
+
+      if (response.status === 400) {
+        setErrorRegistro('Error en el registro')
         window.location.href = '../login'
+      } else if (response.status === 200) {
+        console.log('eror el usario ya existe')
+        setUserExits(!userExits)
       } else {
+        setErrorRegistro(response.data.mensaje || 'Error desconocido')
         setErrorRegistro(response.data.mensaje || 'Error desconocido')
       }
     } catch (error) {
-      console.error(error.response.data.message)
-      setErrorRegistro(error.response.data.message)
+      console.error('Error al procesar la solicitud:', error)
+      setErrorRegistro('Error al procesar la solicitud')
     }
   }
 
@@ -102,8 +110,11 @@ const Registro = () => {
             method="POST"
             onSubmit={handleSubmit}
           >
+            {userExits && (
+              <Alerta tipo="danger" mensaje='El usario ya esta registrado ' />
+            )}
               {errorRegistro && (
-              <Alerta tipo="danger" mensaje={errorRegistro} />
+              <Alerta tipo="danger" mensaje='error' />
               )}
 
             <div>
