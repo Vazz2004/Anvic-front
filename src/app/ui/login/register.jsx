@@ -59,19 +59,14 @@ const Registro = () => {
         correo,
         contrasena
       })
-
-      if (response.status === 400) {
-        setErrorRegistro('Error en el registro')
+      if (response.status === 200) {
         window.location.href = '../login'
-      } else if (response.status === 200) {
-        console.log('eror el usario ya existe')
-        setUserExits(!userExits)
       } else {
         setErrorRegistro(response.data.mensaje || 'Error desconocido')
       }
     } catch (error) {
-      console.error('Error al procesar la solicitud:', error)
-      setErrorRegistro('Error al procesar la solicitud')
+      console.error(error.response.data.message)
+      setErrorRegistro(error.response.data.message)
     }
   }
 
@@ -108,11 +103,8 @@ const Registro = () => {
             method="POST"
             onSubmit={handleSubmit}
           >
-            {userExits && (
-              <Alerta tipo="danger" mensaje='El usario ya esta registrado ' />
-            )}
               {errorRegistro && (
-              <Alerta tipo="danger" mensaje='error' />
+              <Alerta tipo="danger" mensaje={errorRegistro} />
               )}
 
             <div>
