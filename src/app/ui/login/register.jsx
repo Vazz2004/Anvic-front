@@ -8,7 +8,6 @@ const Registro = () => {
   const [apellido, setApellido] = useState('')
   const [correo, setCorreo] = useState('')
   const [errorRegistro, setErrorRegistro] = useState('')
-  const [userExits, setUserExits] = useState(false)
   const [confirmacionContrasena, setConfirmacionContrasena] = useState('')
   const [errorCorreo, setErrorCorreo] = useState(false)
   const [errorContrasena, setErrorContrasena] = useState('')

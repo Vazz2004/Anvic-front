@@ -1,11 +1,10 @@
 'use client'
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import { FaHome, FaBoxOpen, FaChartLine, FaUser } from 'react-icons/fa' // Import icons
 import BotonCerrarSesion from './botonCerrarSesion'
-import { idUser } from '../../hooks/useRol'
+import { rolUser } from '../../hooks/useRol'
 
-const idROl = idUser()
+const idROl = rolUser()
 export default function Sidebar () {
   const [nameUser, setNameUser] = useState({})
   useEffect(() => {
@@ -21,7 +20,7 @@ export default function Sidebar () {
   }, [])
 
   const DenePage = () => {
-    console.log('c')
+    console.log('denege')
   }
 
   return (
@@ -38,31 +37,31 @@ export default function Sidebar () {
         {idROl === 1 ? (
           <>
             <li>
-              <Link href="/perfil" className="flex items-center py-2 px-4">
+              <a href="/perfil" className="flex items-center py-2 px-4">
                 <FaHome className="w-6 h-6 mr-4 text-orange-200" />
                 Inicio
-              </Link>
+              </a>
             </li>
 
             <li>
-              <Link href="/perfil/producto" className="flex items-center py-2 px-4">
+              <a href="/perfil/producto" className="flex items-center py-2 px-4">
                 <FaBoxOpen className="w-6 h-6 mr-4 text-orange-200" />
                 Productos
-              </Link>
+              </a>
             </li>
 
             <li>
-              <Link href="/perfil/ordenes" className="flex items-center py-2 px-4">
+              <a href="/perfil/ordenes" className="flex items-center py-2 px-4">
                 <FaChartLine className="w-6 h-6 mr-4 text-orange-200" />
                 Ordenes
-              </Link>
+              </a>
             </li>
 
             <li>
-              <Link href="/perfil/usuarios" className="flex items-center py-2 px-4">
+              <a href="/perfil/usuarios" className="flex items-center py-2 px-4">
                 <FaUser className="w-6 h-6 mr-4 text-orange-200" />
                 Clientes
-              </Link>
+              </a>
             </li>
           </>
         ) : (
@@ -71,26 +70,24 @@ export default function Sidebar () {
 
         {idROl === 3 ? (
           <>
-            <>
-              <li>
-                <Link href="/perfil/ordenes-cliente" className="flex items-center py-2 px-4">
-                  <FaUser className="w-6 h-6 mr-4 text-orange-200" />
-                  Pedidos
-                </Link>
-              </li>
+            <li>
+              <a href="/perfil/ordenes-cliente" className="flex items-center py-2 px-4">
+                <FaUser className="w-6 h-6 mr-4 text-orange-200" />
+                Pedidos
+              </a>
+            </li>
 
-              <li>
-                <Link href="/perfil/historial-compras-cliente" className="flex items-center py-2 px-4">
-                  <FaUser className="w-6 h-6 mr-4 text-orange-200" />
-                  Historial de compra
-                </Link>
-              </li>
-            </>
-
+            <li>
+              <a href="/perfil/historial-compras-cliente" className="flex items-center py-2 px-4">
+                <FaUser className="w-6 h-6 mr-4 text-orange-200" />
+                Historial de compra
+              </a>
+            </li>
           </>
         ) : (
           DenePage()
         )}
+
         <li>
           <BotonCerrarSesion />
         </li>
