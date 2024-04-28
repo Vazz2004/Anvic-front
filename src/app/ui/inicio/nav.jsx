@@ -1,8 +1,8 @@
 'use client'
 import React, { useEffect, useState, Fragment } from 'react'
-import { LuCable } from 'react-icons/lu'
+import { LuCable, LuShoppingCart } from 'react-icons/lu'
 import { GiEnergise } from 'react-icons/gi'
-import { FaTools, FaTabletAlt, FaRegClock, FaShoppingCart } from 'react-icons/fa'
+import { FaUserCircle, FaTools, FaTabletAlt, FaRegClock } from 'react-icons/fa'
 import { MdComputer, MdSmartphone } from 'react-icons/md'
 import { BiSolidOffer } from 'react-icons/bi'
 import { CgToolbox } from 'react-icons/cg'
@@ -13,9 +13,8 @@ import {
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronDownIcon } from '@heroicons/react/20/solid'
+import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import { existingUser } from '../../hooks/sesionActivate'
-import { rolUser } from '../../hooks/useRol'
 
 const solutions = [
   { name: 'Analytics', description: 'Cables', href: '#', icon: LuCable },
@@ -31,10 +30,6 @@ const solutions = [
   { name: 'Automations', description: 'Accesorios Smartwatch', href: '#', icon: FaRegClock }
 ]
 
-const solutions2 = [
-  { name: 'https://http2.mlstatic.com/D_NQ_NP_768848-MCO54251644979_032023-O.webp', description: 'Xiaomi Redmi Note 12 Dual Sim 128 Gb Ice Blue 4 Gb Ram', href: '#' }
-]
-
 const estadoUser = existingUser()
 console.log('este es el estado', estadoUser)
 
@@ -42,23 +37,13 @@ function classNames (...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
+const callsToAction = [
+  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
+  { name: 'Contact sales', href: '#', icon: PhoneIcon }
+]
+
 export default function Example () {
-  const [nameUser, setNameUser] = useState({})
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const rol = rolUser()
-
-  useEffect(() => {
-    if (typeof window !== 'undefined' && window.localStorage) {
-      const storedUser = localStorage.getItem('myToken')
-      if (storedUser) {
-        const user = JSON.parse(storedUser)
-        setNameUser({ nombre: user.usuario[0].nombre, apellido: user.usuario[0].apellido })
-      }
-    } else {
-      console.error("El objeto 'window' no está definido o 'localStorage' no está disponible. No es un entorno de navegador.")
-    }
-  }, [])
-
   useEffect(() => {
     const buscadorDiv = document.getElementById('buscar')
     const coords = { x: 0, y: 0 }
@@ -217,7 +202,16 @@ export default function Example () {
                                                                 ))}
                                                             </div>
                                                             <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-
+                                                                {callsToAction.map((item) => (
+                                                                    <a
+                                                                        key={item.name}
+                                                                        href={item.href}
+                                                                        className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-gray-100"
+                                                                    >
+                                                                        <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
+                                                                        {item.name}
+                                                                    </a>
+                                                                ))}
                                                             </div>
                                                         </div>
                                                     </Popover.Panel>
@@ -231,18 +225,9 @@ export default function Example () {
 
                                         <Menu as="div" className="movil  relative ml-3">
                                             <div>
-                                                {estadoUser === true && (
-                                                    <Menu.Button className="relative  text-white flex items-center rounded-full text-4xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                                                        <img src="https://i.pinimg.com/736x/28/e6/c6/28e6c686522a710e0e3a3c5e17ec5a31.jpg" alt="" className="h-12 w-12 rounded-full object-cover" />
-                                                        <p className="ml-3 text-xs w-full   ">{nameUser.nombre} {nameUser.apellido}</p>
-                                                    </Menu.Button>
-                                                )}
-                                                {estadoUser === false && (
-                                                    <Menu.Button className="relative bg-white text-black flex items-center justify-center rounded-md text-xs md:text-xs lg:text-xs focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-gray-800 shadow-xs px-3 py-1 md:px-4 md:py-2 lg:px-5 lg:py-3">
-                                                        <p className="font-semibold">Comenzar</p>
-                                                    </Menu.Button>
-                                                )}
-
+                                                <Menu.Button className="relative bg-black text-white flex rounded-full text-4xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                                    <FaUserCircle />
+                                                </Menu.Button>
                                             </div>
                                             <Transition
                                                 as={Fragment}
@@ -279,82 +264,27 @@ export default function Example () {
                                                         </>
                                                     )}
 
-                                                    {estadoUser === true && rol === 3 && (
-                                                        <>
-                                                            <Menu.Item>
-                                                                {({ active }) => (
-                                                                    <a
-                                                                        href="/perfil/perfil-usuario"
-                                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                                    >
-                                                                        Mi perfil
-                                                                    </a>
-                                                                )}
-                                                            </Menu.Item>
-                                                        </>
-                                                    )}
-
-                                                    {estadoUser === true && rol === 1 && (
-                                                        <>
-                                                            <Menu.Item>
-                                                                {({ active }) => (
-                                                                    <a
-                                                                        href="/perfil"
-                                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                                    >
-                                                                        Mi perfil
-                                                                    </a>
-                                                                )}
-                                                            </Menu.Item>
-                                                        </>
+                                                    {estadoUser === true && (
+                                                        <Menu.Item>
+                                                            {({ active }) => (
+                                                                <a
+                                                                    href="perfil/ordenes-cliente"
+                                                                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                                >
+                                                                    Mi perfil
+                                                                </a>
+                                                            )}
+                                                        </Menu.Item>
                                                     )}
 
                                                 </Menu.Items>
                                             </Transition>
                                         </Menu>
 
-                                        <div className=" movil  text-2xl flex items-center w-16 rounded-full justify-center mx-20 ">
+                                        <div className=" movil  text-2xl flex items-center w-16 rounded-full justify-center mx-10 bg-slate-50">
                                             <div className="flex space-x-2">
-                                                {estadoUser === true && (
-                                                    <Popover className="relative">
-                                                        <Popover.Button className="inline-flex items-center gap-x-1  font-semibold leading-6 text-white">
-                                                            <span> <FaShoppingCart /> </span>
-                                                            <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
-                                                        </Popover.Button>
-
-                                                        <Transition
-                                                            as={Fragment}
-                                                            enter="transition ease-out duration-200"
-                                                            enterFrom="opacity-0 translate-y-1"
-                                                            enterTo="opacity-100 translate-y-0"
-                                                            leave="transition ease-in duration-150"
-                                                            leaveFrom="opacity-100 translate-y-0"
-                                                            leaveTo="opacity-0 translate-y-1"
-                                                        >
-                                                            <Popover.Panel className="absolute z-10 mt-5   flex w-screen max-w-max -translate-x-1/2 px-3">
-                                                                <div className=" scrol w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
-                                                                    <div className="p-4">
-                                                                        {solutions2.map((item) => (
-                                                                            <div key={item.name} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50 items-center">
-                                                                                <div>
-                                                                                    <a href={item.href} className="font-semibold h-full text-slate-50">
-                                                                                        <img src={item.name} alt="" className="rounded-lg shadow-md hover:shadow-lg w-20 " />
-                                                                                        <span className="absolute" />
-                                                                                    </a>
-                                                                                    <p className="text-sm text-slate-600 mt-2">{item.description}</p>
-                                                                                </div>
-                                                                            </div>
-
-                                                                        ))}
-                                                                    </div>
-                                                                    <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                                                                    </div>
-                                                                </div>
-                                                            </Popover.Panel>
-                                                        </Transition>
-                                                    </Popover>
-
-                                                )}                                           </div>
+                                                <button className="text-orange "> <LuShoppingCart /> </button>
+                                            </div>
                                         </div>
 
                                     </div>
