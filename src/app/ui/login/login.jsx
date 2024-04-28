@@ -1,6 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import { api } from '../../../api/api'
+import axios from 'axios'
 import Alerta from '../alertas/alert'
 const Login = () => {
   const [correo, setCorreo] = useState('')
@@ -25,7 +25,7 @@ const Login = () => {
     e.preventDefault()
 
     if (typeof window !== 'undefined') {
-      api.post('/login', {
+      axios.post('http://localhost:5000/login', {
         userCorreo: correo,
         userPassword: contrasena
       })
@@ -34,12 +34,14 @@ const Login = () => {
             const { user } = response.data
             setData(user)
             const [dataU] = user.usuario
+            console.log('CONEXIÓN EXITOSA', dataU)
+
             localStorage.setItem('myToken', JSON.stringify(user))
             console.log('id rol', dataU.rol_id)
             if (dataU.rol_id === 1) {
               window.location.href = '/perfil'
             } else if (dataU.rol_id === 3) {
-              window.location.href = '/'
+              window.location.href = '/perfil/historial-compras-cliente'
             }
           }
         })

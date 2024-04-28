@@ -1,12 +1,14 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { FaHome, FaBoxOpen, FaChartLine, FaUser } from 'react-icons/fa' // Import icons
+import { FaHome, FaBoxOpen, FaChartLine, FaUser, FaDropbox, FaNewspaper } from 'react-icons/fa' // Import icons
 import BotonCerrarSesion from './botonCerrarSesion'
 import { rolUser } from '../../hooks/useRol'
 
 const idROl = rolUser()
+
 export default function Sidebar () {
   const [nameUser, setNameUser] = useState({})
+
   useEffect(() => {
     if (typeof window !== 'undefined' && window.localStorage) {
       const storedUser = localStorage.getItem('myToken')
@@ -33,65 +35,61 @@ export default function Sidebar () {
         />
         <p className="text-sm font-semibold text-center">{nameUser.nombre} {nameUser.apellido}</p>
       </div>
-      <ul className="space-y-4">
-        {idROl === 1 ? (
-          <>
+      {idROl === 1 ? (
+        <div>
+          <ul className="space-y-4">
             <li>
               <a href="/perfil" className="flex items-center py-2 px-4">
                 <FaHome className="w-6 h-6 mr-4 text-orange-200" />
                 Inicio
               </a>
             </li>
-
             <li>
               <a href="/perfil/producto" className="flex items-center py-2 px-4">
                 <FaBoxOpen className="w-6 h-6 mr-4 text-orange-200" />
                 Productos
               </a>
             </li>
-
             <li>
               <a href="/perfil/ordenes" className="flex items-center py-2 px-4">
                 <FaChartLine className="w-6 h-6 mr-4 text-orange-200" />
                 Ordenes
               </a>
             </li>
-
             <li>
               <a href="/perfil/usuarios" className="flex items-center py-2 px-4">
                 <FaUser className="w-6 h-6 mr-4 text-orange-200" />
                 Clientes
               </a>
             </li>
-          </>
-        ) : (
-          DenePage()
-        )}
-
-        {idROl === 3 ? (
-          <>
+          </ul>
+        </div>
+      ) : (
+        DenePage()
+      )}
+      {idROl === 3 ? (
+        <div>
+          <ul className="space-y-4">
             <li>
               <a href="/perfil/ordenes-cliente" className="flex items-center py-2 px-4">
-                <FaUser className="w-6 h-6 mr-4 text-orange-200" />
+                <FaDropbox className="w-6 h-6 mr-4 text-orange-200" />
                 Pedidos
               </a>
             </li>
-
             <li>
               <a href="/perfil/historial-compras-cliente" className="flex items-center py-2 px-4">
-                <FaUser className="w-6 h-6 mr-4 text-orange-200" />
+                <FaNewspaper className="w-6 h-6 mr-4 text-orange-200" />
                 Historial de compra
               </a>
             </li>
-          </>
-        ) : (
-          DenePage()
-        )}
-
-        <li>
-          <BotonCerrarSesion />
-        </li>
-      </ul>
+          </ul>
+        </div>
+      ) : (
+        DenePage()
+      )}
+      <li>
+        <BotonCerrarSesion />
+      </li>
     </nav>
   )
 }
