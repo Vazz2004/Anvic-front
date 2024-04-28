@@ -1,4 +1,4 @@
-export const idUser = () => {
+export const rolUser = () => {
   if (typeof window !== 'undefined' && window.localStorage) {
     const storedUser = localStorage.getItem('myToken')
     if (storedUser) {

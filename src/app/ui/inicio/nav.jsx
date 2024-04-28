@@ -15,7 +15,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
 import { existingUser } from '../../hooks/sesionActivate'
-
+import { rolUser } from '../../hooks/useRol'
 const solutions = [
   { name: 'Analytics', description: 'Cables', href: '#', icon: LuCable },
   { name: 'Engagement', description: 'Adaptadores', href: '#', icon: GiEnergise },
@@ -44,6 +44,7 @@ const callsToAction = [
 
 export default function Example () {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const rol = rolUser()
   useEffect(() => {
     const buscadorDiv = document.getElementById('buscar')
     const coords = { x: 0, y: 0 }
@@ -264,17 +265,30 @@ export default function Example () {
                                                         </>
                                                     )}
 
-                                                    {estadoUser === true && (
-                                                        <Menu.Item>
-                                                            {({ active }) => (
-                                                                <a
-                                                                    href="perfil/ordenes-cliente"
-                                                                    className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                                                                >
-                                                                    Mi perfil
-                                                                </a>
-                                                            )}
-                                                        </Menu.Item>
+                                                    {estadoUser === true && rol === 3 && (
+                                                        <>
+                                                            <Menu.Item>
+                                                                {({ active }) => (
+                                                                    <a
+                                                                        href="/perfil/ordenes-cliente"
+                                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                                    >
+                                                                        Mi perfil
+                                                                    </a>
+                                                                )}
+                                                            </Menu.Item>
+
+                                                            <Menu.Item>
+                                                                {({ active }) => (
+                                                                    <a
+                                                                        href="/perfil"
+                                                                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
+                                                                    >
+                                                                        Mi perfil
+                                                                    </a>
+                                                                )}
+                                                            </Menu.Item>
+                                                        </>
                                                     )}
 
                                                 </Menu.Items>
