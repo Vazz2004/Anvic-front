@@ -87,9 +87,11 @@ export default function Sidebar () {
       ) : (
         DenePage()
       )}
-      <li>
+      <ul>
+      <li className='fixed bottom-5 ' >
         <BotonCerrarSesion />
       </li>
+      </ul>
     </nav>
   )
 }

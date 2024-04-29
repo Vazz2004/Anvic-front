@@ -18,8 +18,8 @@ export default function Page () {
 
   return (
     <>
-      <div className='flex  items-start'>
-        <Nav className='flex-1' />
+      <div className='flex items-start'>
+        <Nav style={{ flex: '30%' }} />
 
         {isLoading ? (
           <div className="flex justify-center items-center w-screen h-screen">
@@ -27,17 +27,18 @@ export default function Page () {
           </div>
         ) : (
           <div className="flex justify-center items-center w-screen h-screen">
-                  <Stack
-                width='90%'
-                marginLeft='15%'
-                spacing={2}
-              >
-                <Dash className='flex-1' />
-              </Stack>
-           </div>
+            <Stack
+              width='90%'
+              marginLeft='15%'
+              spacing={2}
+            >
+              <div >
+                <Dash />
+              </div>
+            </Stack>
+          </div>
         )}
       </div>
-
     </>
   )
 }

@@ -21,7 +21,7 @@ const Card = ({ categoria, title, content, imageSrc }) => {
   }
 
   return (
-    <div className="grid gap-5 relative group border border-gray-300 rounded-lg p-10 h-80">
+    <div className="grid gap-5 relative group border border-gray-300 rounded-lg p-10 h-80 max-w-full">
       <img
         alt="img"
         className="rounded-lg object-cover w-full aspect-[16/9] group-hover:opacity-50 transition-opacity"

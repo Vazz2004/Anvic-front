@@ -24,7 +24,7 @@ export default function Page () {
             <Loader />
           </div>
     ) : (
-          <div className="flex justify-center items-center w-screen h-screen"> <Cards /> </div>
+          <div className="flex justify-center items-center h-screen w-full"> <Cards /> </div>
     )}
 
   </div>
