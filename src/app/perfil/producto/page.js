@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import Nav from '../../ui/perfil/nav.jsx'
 import Cards from '../../ui/perfil/productos/mostarCarta.jsx'
 import Loader from '../../ui/pantallaDeCarga/load.jsx'
 import '../../globals.css'
@@ -24,10 +23,7 @@ export default function Page () {
             <Loader />
           </div>
     ) : (
-      <>
-      <div className='w-2/12'> <Nav /> </div>
-      <div className='w-10/12'> <Cards /> </div>
-      </>
+          <div className="flex justify-center items-center h-screen w-full"> <Cards /> </div>
     )}
 
   </div>

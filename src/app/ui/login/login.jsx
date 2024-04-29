@@ -34,8 +34,6 @@ const Login = () => {
             const { user } = response.data
             setData(user)
             const [dataU] = user.usuario
-            console.log('CONEXIÓN EXITOSA', dataU)
-
             localStorage.setItem('myToken', JSON.stringify(user))
             console.log('id rol', dataU.rol_id)
             if (dataU.rol_id === 1) {
