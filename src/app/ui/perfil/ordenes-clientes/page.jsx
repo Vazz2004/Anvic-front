@@ -36,7 +36,7 @@ export default function Page () {
               <Grid item xs={12} sm={6}>
                 <div className='flex flex-col h-full'>
                   <Typography variant="h5" gutterBottom>
-                    Número de orden: {carta.numero_orden}
+                    Número de orden: ANV-{carta.id_orden}
                   </Typography>
                   <Typography variant="body1" color="textSecondary" gutterBottom>
                     Fecha de compra: {dayjs(carta.fecha_pedido).format('DD/MM/YYYY')}
