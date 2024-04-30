@@ -23,7 +23,10 @@ export default function Page () {
             <Loader />
           </div>
     ) : (
-          <div className="flex justify-center items-center h-screen w-full"> <Cards /> </div>
+      <>
+      <div className='w-2/12'> <Nav /> </div>
+      <div className='w-full'> <Cards /> </div>
+      </>
     )}
 
   </div>
