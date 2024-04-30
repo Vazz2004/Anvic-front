@@ -3,7 +3,7 @@ import Modal from 'react-modal'
 import TablaProductos from '../productsTable'
 import FormProductoEditar from './editarProductos'
 import Botonera from '../../uiMother/botonera'
-import { PencilIcon } from '@heroicons/react/24/outline'
+import { PencilIcon, TrashIcon } from '@heroicons/react/24/outline'
 import FormEliminar from './eliminar'
 
 import Card from '@mui/material/Card'
@@ -12,7 +12,6 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-
 export default function ImgMediaCard ({ categoria, title, imageSrc }) {
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [editarModalIsOpen, setEditarModalIsOpen] = useState(false)
@@ -90,7 +89,11 @@ style={{
           />
         }
         eliminar={
-          <FormEliminar />
+          <FormEliminar
+          bgColor='error'
+          icon={<TrashIcon className='w-6 h-6' />}
+          tooltip={'borrar'}
+          />
         }
       />
     </div>

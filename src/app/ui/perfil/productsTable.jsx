@@ -7,7 +7,6 @@ function TablaProductos ({ categoria }) {
   const { selectedId } = useSelectId()
   const [data, setData] = useState([])
   const [error, setError] = useState(null)
-  const [reload, setReload] = useState(false) // Nuevo estado para controlar la recarga
 
   useEffect(() => {
     const fetchData = async () => {
@@ -26,7 +25,7 @@ function TablaProductos ({ categoria }) {
     const interval = setInterval(fetchData, 60000)
 
     return () => clearInterval(interval)
-  }, [reload]) // Hacer que useEffect se ejecute cuando reload cambie
+  }, []) // Hacer que useEffect se ejecute cuando reload cambie
 
   const filteredData = categoria ? data.filter(row => row.nombre_categoria === categoria) : data
 
@@ -55,7 +54,6 @@ function TablaProductos ({ categoria }) {
       {error && <p>{error}</p>}
       <DataTable columns={columns} rows={filteredData} selectId={selectedId} />
       {selectedId && <p>Selected ID: {selectedId}</p>}
-      <button onClick={() => setReload(!reload)}>Recargar</button> {/* Botón para recargar manualmente */}
     </div>
   )
 }
