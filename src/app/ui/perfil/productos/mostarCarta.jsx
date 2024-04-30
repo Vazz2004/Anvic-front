@@ -44,7 +44,6 @@ const App = () => {
           <div key={index}>
             <Card
               title={categoria.value}
-              content="Prueba contenido"
               imageSrc={categoria.url_imagen} // Ajusta la ruta a la imagen
               categoria={categoria.value}
             />
