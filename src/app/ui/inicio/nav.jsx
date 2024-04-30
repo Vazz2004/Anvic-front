@@ -277,7 +277,11 @@ export default function Example () {
                                                                     </a>
                                                                 )}
                                                             </Menu.Item>
+                                                        </>
+                                                    )}
 
+                                                    {estadoUser === true && rol === 1 && (
+                                                        <>
                                                             <Menu.Item>
                                                                 {({ active }) => (
                                                                     <a
