@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
-import { FaHome, FaBoxOpen, FaChartLine, FaUser, FaDropbox, FaNewspaper } from 'react-icons/fa' // Import icons
+import { FaHome, FaBoxOpen, FaChartLine, FaUser, FaDropbox, FaNewspaper, FaStore } from 'react-icons/fa' // Import icons
 import BotonCerrarSesion from './botonCerrarSesion'
 import { rolUser } from '../../hooks/useRol'
 
@@ -87,10 +87,19 @@ export default function Sidebar () {
       ) : (
         DenePage()
       )}
+      <div className="space-4 mt-3">
+        <ul>
+          <li>
+            <a href="/" className="flex items-center py-2 px-4">
+              <FaStore className="w-6 h-6 mr-4 text-orange-200" />Ir a la tienda
+            </a>
+          </li>
+        </ul>
+      </div>
       <ul>
-      <li className='fixed bottom-5 ' >
-        <BotonCerrarSesion />
-      </li>
+        <li className='fixed bottom-5 ' >
+          <BotonCerrarSesion />
+        </li>
       </ul>
     </nav>
   )
