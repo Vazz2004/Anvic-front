@@ -43,6 +43,7 @@ const FormProducto = (props) => {
   const [mostarrErorrColores, setMostarrErorrColores] = useState(false)
   const [mostarrValidacion, setMOstarrValidacion] = useState(false)
   const [imagenesProducto, setImagenesProducto] = useState('')
+  const [verButon, setVerBtuton] = useState(false)
   // Seteo mensaje
   const [errorColores, setErrorColores] = useState('')
 
@@ -149,6 +150,7 @@ const FormProducto = (props) => {
 
   const handleSubmitImage = async (e) => {
     e.preventDefault()
+    setVerBtuton(true)
 
     try {
       console.log('uploading')
@@ -247,9 +249,6 @@ const FormProducto = (props) => {
     } else {
       setMostrarElemento3(false)
       setMostrarElemento4(true)
-      setImagenesProducto([
-        'https://firebasestorage.googleapis.com/v0/b/anvic-image.appspot.com/o/imagenEjemplo.webp?alt=media&token=584a3ff4-9209-4042-b82c-13674cab8607'
-      ])
     }
   }
 
@@ -540,18 +539,24 @@ const FormProducto = (props) => {
                                     {imagenesProducto.length > 0 ? (
                                         <Galeria datos={imagenesProducto} />
                                     ) : (
-                                        <p>No hay imágenes disponibles para este producto.</p>
+                                      <div className='grid grid-cols-2 md:grid-cols-3 gap-4 mx-10 mt-10'>
+                                        <img className="h-auto max-w-full rounded-lg transition-opacity duration-300 hover:opacity-50" src="https://www.shutterstock.com/image-vector/camera-icon-trendy-flat-style-600nw-1181618314.jpg" alt="" />
+                                      </div>
+
                                     )}
 
                                 </Grid>
 
                                 <Grid item xs={12} sm={12}>
-                                    <button
-                                        onClick={handleSubmit}
-                                        className="flex w-full justify-center rounded-md bg-orange-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
-                                    >
-                                        Finalizar
-                                    </button>
+                                   {verButon === true && (
+                                     <button
+                                     id='botonFinalizar'
+                                     onClick={handleSubmit}
+                                     className=" flex w-full justify-center rounded-md bg-orange-400 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-orange-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                                 >
+                                     Finalizar
+                                 </button>
+                                   )}
                                 </Grid>
 
                             </>
