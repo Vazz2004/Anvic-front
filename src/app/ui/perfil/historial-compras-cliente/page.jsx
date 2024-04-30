@@ -50,7 +50,7 @@ export default function Page () {
                 </Typography>
                 <div className='mb-2 flex items-center'>
                   <Typography variant="subtitle1" color="textPrimary">
-                    Número de orden:
+                    Número de orden: ANV-{carta.id_orden}
                   </Typography>
                   <Typography variant="subtitle1" color="textSecondary" className='ml-2'>
                     {carta.numero_orden}
