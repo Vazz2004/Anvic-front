@@ -26,7 +26,7 @@ export default function Page () {
     ) : (
       <>
       <div className='w-2/12'> <Nav /> </div>
-      <div className='w-full'> <Cards /> </div>
+      <div className='w-10/12'> <Cards /> </div>
       </>
     )}
 

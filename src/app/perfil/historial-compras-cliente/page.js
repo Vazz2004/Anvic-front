@@ -16,19 +16,19 @@ export default function Page () {
 
   return (
     <>
-      <div className='flex  items-start'>
-        <Nav className='flex-1' />
 
         {isLoading ? (
           <div className="flex justify-center items-center w-screen h-screen">
             <Loader />
           </div>
         ) : (
+          <>
+            <div className='w-2/12' > <Nav /> </div>
             <div className="flex justify-center  w-screen h-screen">
             <PageHome />
           </div>
+          </>
         )}
-      </div>
 
     </>
   )
