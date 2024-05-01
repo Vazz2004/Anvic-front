@@ -1,8 +1,7 @@
 'use client'
 import React, { useState } from 'react'
-import axios from 'axios'
 import Alerta from '../alertas/alert'
-
+import { api } from '../../../api/api'
 const Registro = () => {
   const [contrasena, setContrasena] = useState('')
   const [nombre, setNombre] = useState('')
@@ -53,7 +52,7 @@ const Registro = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/registro', {
+      const response = await api.post('registro', {
         nombre,
         apellido,
         correo,
