@@ -1,8 +1,8 @@
 'use client'
 import React, { useEffect, useState, Fragment } from 'react'
-import { LuCable, LuShoppingCart } from 'react-icons/lu'
+import { LuCable } from 'react-icons/lu'
 import { GiEnergise } from 'react-icons/gi'
-import { FaUserCircle, FaTools, FaTabletAlt, FaRegClock } from 'react-icons/fa'
+import { FaTools, FaTabletAlt, FaRegClock } from 'react-icons/fa'
 import { MdComputer, MdSmartphone } from 'react-icons/md'
 import { BiSolidOffer } from 'react-icons/bi'
 import { CgToolbox } from 'react-icons/cg'
@@ -226,9 +226,18 @@ export default function Example () {
 
                                         <Menu as="div" className="movil  relative ml-3">
                                             <div>
-                                                <Menu.Button className="relative bg-black text-white flex rounded-full text-4xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-                                                    <FaUserCircle />
-                                                </Menu.Button>
+                                                {estadoUser === true && (
+                                                    <Menu.Button className="relative  text-white flex items-center rounded-full text-4xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+                                                        <img src="https://i.pinimg.com/736x/28/e6/c6/28e6c686522a710e0e3a3c5e17ec5a31.jpg" alt="" className="h-12 w-12 rounded-full object-cover" />
+                                                        <p className="ml-3 text-xs w-full   ">Samue Vasquez</p>
+                                                    </Menu.Button>
+                                                )}
+                                                {estadoUser === false && (
+                                                    <Menu.Button className="relative bg-white text-black flex items-center justify-center rounded-md text-xs md:text-xs lg:text-xs focus:outline-none focus:ring-2 focus:ring-black focus:ring-offset-2 focus:ring-offset-gray-800 shadow-xs px-3 py-1 md:px-4 md:py-2 lg:px-5 lg:py-3">
+                                                        <p className="font-semibold">Comenzar</p>
+                                                    </Menu.Button>
+                                                )}
+
                                             </div>
                                             <Transition
                                                 as={Fragment}
@@ -301,7 +310,7 @@ export default function Example () {
 
                                         <div className=" movil  text-2xl flex items-center w-16 rounded-full justify-center mx-10 bg-slate-50">
                                             <div className="flex space-x-2">
-                                                <button className="text-orange "> <LuShoppingCart /> </button>
+                                                {/* Boton carrirto */}
                                             </div>
                                         </div>
 
