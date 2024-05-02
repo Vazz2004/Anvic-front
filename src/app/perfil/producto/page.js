@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Cards from '../../ui/perfil/productos/mostarCarta.jsx'
 import Loader from '../../ui/pantallaDeCarga/load.jsx'
+import Nav from '../../ui/perfil/nav.jsx'
 import '../../globals.css'
 export default function Page () {
   const [isLoading, setIsLoading] = useState(true)
