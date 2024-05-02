@@ -88,7 +88,7 @@ export default function Page () {
           <CardContent className='px-6 py-4'> {/* Ajustamos el padding */}
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
-                <img className='max-w-xs mx-auto object-cover border rounded-md' src={carta.url_img} alt="Imagen producto" /> {/* Agregamos borde y ajustamos el tamaño de la imagen */}
+                <img className='w-40 mx-auto object-cover border rounded-md' src={carta.url_img} alt="Imagen producto" /> {/* Agregamos borde y ajustamos el tamaño de la imagen */}
               </Grid>
               <Grid item xs={12} sm={6}>
                 <div className='flex flex-col h-full'>
