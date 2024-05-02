@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 import { api } from '../../../api/api'
 import Alerta from '../alertas/alert'
+import { api } from '../../../api/api'
 const Login = () => {
   const [correo, setCorreo] = useState('')
   const [contrasena, setContrasena] = useState('')
@@ -25,6 +26,7 @@ const Login = () => {
     e.preventDefault()
 
     if (typeof window !== 'undefined') {
+      api.post('/login', {
       api.post('/login', {
         userCorreo: correo,
         userPassword: contrasena
