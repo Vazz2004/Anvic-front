@@ -39,7 +39,7 @@ const Login = () => {
             if (dataU.rol_id === 1) {
               window.location.href = '/perfil'
             } else if (dataU.rol_id === 3) {
-              window.location.href = '/perfil/historial-compras-cliente'
+              window.location.href = '/'
             }
           }
         })
