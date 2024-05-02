@@ -13,9 +13,10 @@ import {
 } from '@heroicons/react/24/outline'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/react/20/solid'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 import { existingUser } from '../../hooks/sesionActivate'
 import { rolUser } from '../../hooks/useRol'
+
 const solutions = [
   { name: 'Analytics', description: 'Cables', href: '#', icon: LuCable },
   { name: 'Engagement', description: 'Adaptadores', href: '#', icon: GiEnergise },
@@ -30,6 +31,10 @@ const solutions = [
   { name: 'Automations', description: 'Accesorios Smartwatch', href: '#', icon: FaRegClock }
 ]
 
+const solutions2 = [
+  { name: 'https://http2.mlstatic.com/D_NQ_NP_768848-MCO54251644979_032023-O.webp', description: 'Xiaomi Redmi Note 12 Dual Sim 128 Gb Ice Blue 4 Gb Ram', href: '#' }
+]
+
 const estadoUser = existingUser()
 console.log('este es el estado', estadoUser)
 
@@ -37,14 +42,22 @@ function classNames (...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-const callsToAction = [
-  { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
-  { name: 'Contact sales', href: '#', icon: PhoneIcon }
-]
-
 export default function Example () {
+  const [nameUser, setNameUser] = useState({})
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const rol = rolUser()
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const storedUser = localStorage.getItem('myToken')
+      if (storedUser) {
+        const user = JSON.parse(storedUser)
+        setNameUser({ nombre: user.usuario[0].nombre, apellido: user.usuario[0].apellido })
+      }
+    } else {
+      console.error("El objeto 'window' no está definido o 'localStorage' no está disponible. No es un entorno de navegador.")
+    }
+  }, [])
   useEffect(() => {
     const buscadorDiv = document.getElementById('buscar')
     const coords = { x: 0, y: 0 }
@@ -203,16 +216,7 @@ export default function Example () {
                                                                 ))}
                                                             </div>
                                                             <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                                                                {callsToAction.map((item) => (
-                                                                    <a
-                                                                        key={item.name}
-                                                                        href={item.href}
-                                                                        className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-gray-100"
-                                                                    >
-                                                                        <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-                                                                        {item.name}
-                                                                    </a>
-                                                                ))}
+
                                                             </div>
                                                         </div>
                                                     </Popover.Panel>
@@ -229,7 +233,7 @@ export default function Example () {
                                                 {estadoUser === true && (
                                                     <Menu.Button className="relative  text-white flex items-center rounded-full text-4xl focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                                         <img src="https://i.pinimg.com/736x/28/e6/c6/28e6c686522a710e0e3a3c5e17ec5a31.jpg" alt="" className="h-12 w-12 rounded-full object-cover" />
-                                                        <p className="ml-3 text-xs w-full   ">Samue Vasquez</p>
+                                                        <p className="ml-3 text-xs w-full   ">{nameUser.nombre} {nameUser.apellido}</p>
                                                     </Menu.Button>
                                                 )}
                                                 {estadoUser === false && (
@@ -310,7 +314,8 @@ export default function Example () {
 
                                         <div className=" movil  text-2xl flex items-center w-16 rounded-full justify-center mx-20 ">
                                             <div className="flex space-x-2">
-                                            <Popover className="relative">
+                                            {estadoUser === true && (
+                                                <Popover className="relative">
                                                 <Popover.Button className="inline-flex items-center gap-x-1  font-semibold leading-6 text-white">
                                                     <span> <FaShoppingCart /> </span>
                                                     <ChevronDownIcon className="h-5 w-5" aria-hidden="true" />
@@ -325,41 +330,30 @@ export default function Example () {
                                                     leaveFrom="opacity-100 translate-y-0"
                                                     leaveTo="opacity-0 translate-y-1"
                                                 >
-                                                    <Popover.Panel className="absolute left-1/2 z-10 mt-5  mx-40 flex w-screen max-w-max -translate-x-1/2 px-3">
+                                                    <Popover.Panel className="absolute z-10 mt-5   flex w-screen max-w-max -translate-x-1/2 px-3">
                                                         <div className=" scrol w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-white text-sm leading-6 shadow-lg ring-1 ring-gray-900/5">
                                                             <div className="p-4">
-                                                                {solutions.map((item) => (
+                                                                {solutions2.map((item) => (
                                                                     <div key={item.name} className="group relative flex gap-x-6 rounded-lg p-4 hover:bg-gray-50 items-center">
-                                                                        <div className="mt-1 flex h-6 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                                                                            <item.icon className="h-6 w-6 text-gray-600 group-hover:text-orange-600" aria-hidden="true" />
-                                                                        </div>
-                                                                        <div>
-                                                                            <a href={item.href} className="font-semibold h-full text-slate-50">
-                                                                                {item.name}
-                                                                                <span className="absolute " />
-                                                                            </a>
-                                                                            <p className="  text-slate-600">{item.description}</p>
-                                                                        </div>
+                                                                    <div>
+                                                                        <a href={item.href} className="font-semibold h-full text-slate-50">
+                                                                            <img src={item.name} alt="" className="rounded-lg shadow-md hover:shadow-lg w-20 " />
+                                                                            <span className="absolute" />
+                                                                        </a>
+                                                                        <p className="text-sm text-slate-600 mt-2">{item.description}</p>
                                                                     </div>
+                                                                </div>
+
                                                                 ))}
                                                             </div>
                                                             <div className="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
-                                                                {callsToAction.map((item) => (
-                                                                    <a
-                                                                        key={item.name}
-                                                                        href={item.href}
-                                                                        className="flex items-center justify-center gap-x-2.5 p-3 font-semibold text-gray-900 hover:bg-gray-100"
-                                                                    >
-                                                                        <item.icon className="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
-                                                                        {item.name}
-                                                                    </a>
-                                                                ))}
                                                             </div>
                                                         </div>
                                                     </Popover.Panel>
                                                 </Transition>
                                             </Popover>
-                                            </div>
+
+                                            )}                                           </div>
                                         </div>
 
                                     </div>
