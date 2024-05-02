@@ -69,7 +69,15 @@ export default function Sidebar () {
       )}
       {idROl === 3 ? (
         <div>
-          <ul className="space-y-4">
+          <ul className="space-y-4 " >
+          <li>
+              <a href="/perfil/perfil-usuario" className="flex items-center py-2 px-4">
+                <FaUser className="w-6 h-6 mr-4 text-orange-200" />
+                Perfil
+              </a>
+            </li>
+          </ul>
+          <ul className="space-y-4 mt-4">
             <li>
               <a href="/perfil/ordenes-cliente" className="flex items-center py-2 px-4">
                 <FaDropbox className="w-6 h-6 mr-4 text-orange-200" />

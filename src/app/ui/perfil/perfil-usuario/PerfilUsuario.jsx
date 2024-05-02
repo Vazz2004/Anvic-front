@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Card from '../../inicio/comprueba'
+
 const UserProfile = ({ user }) => {
   const [showChangePassword, setShowChangePassword] = useState(false)
   const [showEditForm, setShowEditForm] = useState(false)
@@ -97,7 +97,7 @@ const UserProfile = ({ user }) => {
               />
               <div className="flex justify-between items-center">
                 <button
-                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-md mr-2"
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-md mr-2"
                   onClick={handleChangePassword}
                 >
                   Cambiar Contraseña
@@ -120,33 +120,24 @@ const UserProfile = ({ user }) => {
                   Cambiar Contraseña
                 </button>
                 <button
-                  className="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-md"
+                  className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-md"
                   onClick={handleEditProfile}
                 >
                   Editar Perfil
                 </button>
               </div>
               <div>
-                <a href="/perfil/ordenes-cliente" className="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-md mr-2">
-                  Pedidos
+                <a href="/ordenes" className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-semibold px-4 py-2 rounded-md mr-2">
+                  Órdenes
                 </a>
-                <a href="/" className="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-md mr-2">
+                <a href="/tienda" className="mt-4 bg-gray-500 hover:bg-gray-600 text-white font-semibold px-4 py-2 rounded-md">
                   Tienda
-                </a>
-
-                <a href="/perfil/historial-compras-cliente" className="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-md mr-2">
-                  Mis compras
                 </a>
               </div>
             </div>
           )}
         </div>
       )}
-
-      <div className="w-full mt-10">
-      <h1 className="text-3xl font-bold tracking-tight">Productos recomendados </h1>
-      <Card />
-      </div>
     </div>
   )
 }
