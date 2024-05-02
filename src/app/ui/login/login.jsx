@@ -1,8 +1,6 @@
 'use client'
 import React, { useState } from 'react'
-import Modal from 'react-modal'
 import { api } from '../../../api/api'
-import axios from 'axios'
 import Alerta from '../alertas/alert'
 const Login = () => {
   const [correo, setCorreo] = useState('')
