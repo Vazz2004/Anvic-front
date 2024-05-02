@@ -26,7 +26,7 @@ export default function Page () {
     <div className='flex flex-col items-center justify-center h-full'>
     <img src="https://i.ibb.co/r7tDx56/Black-Modern-Hacker-Cat-T-Shirt.png" className='w-52 sm:w-56 lg:w-56 mx-auto opacity-70' alt="No hay datos" />
     <Typography variant="body1" color="textPrimary" className="text-center mt-4">
-      No hay datos disponibles.
+      No hay datos disponibles o aun se entregan
     </Typography>
   </div>
 

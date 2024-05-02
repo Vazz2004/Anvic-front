@@ -23,8 +23,8 @@ export default function Page () {
         </div>
       ) : (
         <>
-          <div className='2/12' ><Nav /></div>
-          <div className='10/12'>
+          <div className='w-2/12' ><Nav /></div>
+          <div className='w-10/12 '>
             <PageHome />
           </div>
         </>

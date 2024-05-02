@@ -24,7 +24,9 @@ export default function Page () {
   }, [])
 
   return (
-    <div className='p-5 mx-16'> {/* Agregamos padding al contenedor principal */}
+    <div className='mx-80'> {/* Agregamos padding al contenedor principal */}
+                <h1 className="text-3xl font-bold tracking-tight">Tus ordenes </h1>
+            <p className="text-gray-500 dark:text-gray-400">El estado y las ordenes pendientes por entregar</p>
       {dataCard.length === 0 ? (
         <div className='flex flex-col items-center justify-center h-full'>
           <img src="https://i.ibb.co/r7tDx56/Black-Modern-Hacker-Cat-T-Shirt.png" className='w-52 sm:w-56 lg:w-56 mx-auto opacity-70' alt="No hay datos" />
@@ -33,14 +35,14 @@ export default function Page () {
           </Typography>
         </div>
       ) : (
-        <div className='bg-gray-200'>
+        <div className=''>
           {dataCard.map((carta, index) => (
             <div key={index} className='mb-6'> {/* Agregamos margen inferior a cada tarjeta */}
               <Card className='rounded-lg shadow-lg border border-gray-200'>
                 <CardContent className='px-6 py-4'> {/* Ajustamos el padding */}
                   <Grid container spacing={3}>
                     <Grid item xs={12} sm={6}>
-                      <img className='max-w-xs mx-auto object-cover border rounded-md' src={carta.url_img} alt="Imagen producto" /> {/* Agregamos borde y ajustamos el tamaño de la imagen */}
+                      <img className='w-40 mx-auto object-cover border rounded-md' src={carta.url_img} alt="Imagen producto" /> {/* Agregamos borde y ajustamos el tamaño de la imagen */}
                     </Grid>
                     <Grid item xs={12} sm={6}>
                       <div className='flex flex-col h-full'>
