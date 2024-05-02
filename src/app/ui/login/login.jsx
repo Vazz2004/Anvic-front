@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react'
-import axios from 'axios'
 import Alerta from '../alertas/alert'
+import { api } from '../../../api/api'
 const Login = () => {
   const [correo, setCorreo] = useState('')
   const [contrasena, setContrasena] = useState('')
@@ -25,7 +25,7 @@ const Login = () => {
     e.preventDefault()
 
     if (typeof window !== 'undefined') {
-      axios.post('http://localhost:5000/login', {
+      api.post('/login', {
         userCorreo: correo,
         userPassword: contrasena
       })
